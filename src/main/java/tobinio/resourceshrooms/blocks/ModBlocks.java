@@ -25,6 +25,7 @@ public class ModBlocks {
             .luminance(state -> 1)
             .postProcess(Blocks::always)
             .nonOpaque()
+            .ticksRandomly()
             .pistonBehavior(PistonBehavior.DESTROY)), "stone_mushroom", true);
 
     public static <T extends Block> T register(T block, String name, boolean shouldRegisterItem) {

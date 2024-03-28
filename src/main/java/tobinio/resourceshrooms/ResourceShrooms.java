@@ -3,6 +3,7 @@ package tobinio.resourceshrooms;
 import net.fabricmc.api.ModInitializer;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.items.ModItems;
+import tobinio.resourceshrooms.tags.ModTags;
 
 public class ResourceShrooms implements ModInitializer {
 
@@ -12,5 +13,6 @@ public class ResourceShrooms implements ModInitializer {
     public void onInitialize() {
         ModItems.initialize();
         ModBlocks.initialize();
+        ModTags.initialize();
     }
 }

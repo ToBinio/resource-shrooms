@@ -10,5 +10,6 @@ public class ModDatagen implements DataGeneratorEntrypoint {
 
         pack.addProvider(ModelProvider::new);
         pack.addProvider(EnglishTranslationProvider::new);
+        pack.addProvider(ModTagProvider::new);
     }
 }

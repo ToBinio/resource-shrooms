@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "resource-shrooms",
+  "version": "${version}",
+
+  "name": "Resource Shrooms",
+  "description": "",
+  "authors": [],
+  "contact": {},
+
+  "license": "MIT",
+  "icon": "assets/resource-shrooms/icon.png",
+
+  "environment": "*",
+  "entrypoints": {},
+
+      "mixins": [
+        "resource-shrooms.mixins.json"
+      ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+        "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

@@ -26,6 +26,7 @@ public class ModBlocks {
             .postProcess(Blocks::always)
             .nonOpaque()
             .ticksRandomly()
+            .offset(AbstractBlock.OffsetType.XZ)
             .pistonBehavior(PistonBehavior.DESTROY)), "stone_mushroom", true);
 
     public static <T extends Block> T register(T block, String name, boolean shouldRegisterItem) {

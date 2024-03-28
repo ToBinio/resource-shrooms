@@ -1,26 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "resource-shrooms",
+  "id": "resourceshrooms",
   "version": "${version}",
-
   "name": "Resource Shrooms",
   "description": "",
   "authors": [],
-  "contact": {},
-
+  "contact": {
+    "repo": "https://github.com/tobinio/resource-shrooms"
+  },
   "license": "MIT",
-  "icon": "assets/resource-shrooms/icon.png",
-
+  "icon": "assets/resourceshrooms/icon.png",
   "environment": "*",
-  "entrypoints": {},
-
-      "mixins": [
-        "resource-shrooms.mixins.json"
-      ],
-
+  "entrypoints": {
+    "client": [
+      "tobinio.resourceshrooms.client.ResourceShroomsClient"
+    ],
+    "main": [
+      "tobinio.resourceshrooms.ResourceShrooms"
+    ],
+    "fabric-datagen": [
+      "tobinio.resourceshrooms.datagen.ModDatagen"
+    ]
+  },
+  "mixins": [
+    "resourceshrooms.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
-        "fabric": "*",
+    "fabric": "*",
     "minecraft": "${minecraft_version}"
   }
 }

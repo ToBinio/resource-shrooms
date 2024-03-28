@@ -6,8 +6,8 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 
-public class ModelGenerator extends FabricModelProvider {
-    public ModelGenerator(FabricDataOutput output) {
+public class ModelProvider extends FabricModelProvider {
+    public ModelProvider(FabricDataOutput output) {
         super(output);
     }
 

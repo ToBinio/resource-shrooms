@@ -12,5 +12,6 @@ public class EnglishTranslationProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add(ModBlocks.STONE_MUSHROOM, "Stone Mushroom");
+        translationBuilder.add(ModBlocks.COAL_MUSHROOM, "Coal Mushroom");
     }
 }

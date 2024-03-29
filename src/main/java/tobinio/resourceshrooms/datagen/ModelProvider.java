@@ -17,6 +17,7 @@ public class ModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         this.registerMushroom(blockStateModelGenerator, ModBlocks.STONE_MUSHROOM);
+        this.registerMushroom(blockStateModelGenerator, ModBlocks.COAL_MUSHROOM);
     }
 
     @Override

@@ -12,5 +12,6 @@ public class LootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         addDrop(ModBlocks.STONE_MUSHROOM, drops(ModBlocks.STONE_MUSHROOM));
+        addDrop(ModBlocks.COAL_MUSHROOM, drops(ModBlocks.COAL_MUSHROOM));
     }
 }

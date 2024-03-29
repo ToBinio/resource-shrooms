@@ -18,16 +18,8 @@ import tobinio.resourceshrooms.ResourceShrooms;
 
 public class ModBlocks {
 
-    public static final Block STONE_MUSHROOM = register(new MushroomBlock(AbstractBlock.Settings.create()
-            .sounds(BlockSoundGroup.CROP)
-            .noCollision()
-            .breakInstantly()
-            .luminance(state -> 1)
-            .postProcess(Blocks::always)
-            .nonOpaque()
-            .ticksRandomly()
-            .offset(AbstractBlock.OffsetType.XZ)
-            .pistonBehavior(PistonBehavior.DESTROY)), "stone_mushroom", true);
+    public static final MushroomBlock STONE_MUSHROOM = registerMushroom("stone_mushroom");
+    public static final MushroomBlock COAL_MUSHROOM = registerMushroom("coal_mushroom");
 
     public static <T extends Block> T register(T block, String name, boolean shouldRegisterItem) {
         Identifier id = new Identifier(ResourceShrooms.MOD_ID, name);
@@ -40,12 +32,27 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, id, block);
     }
 
+    public static MushroomBlock registerMushroom(String name) {
+        return register(new MushroomBlock(AbstractBlock.Settings.create()
+                .sounds(BlockSoundGroup.CROP)
+                .noCollision()
+                .breakInstantly()
+                .luminance(state -> 1)
+                .postProcess(Blocks::always)
+                .nonOpaque()
+                .ticksRandomly()
+                .offset(AbstractBlock.OffsetType.XZ)
+                .pistonBehavior(PistonBehavior.DESTROY)), name, true);
+    }
+
 
     public static void initialize() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register((itemGroup) -> itemGroup.add(STONE_MUSHROOM));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register((itemGroup) -> itemGroup.add(COAL_MUSHROOM));
     }
 
     public static void initializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(STONE_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(COAL_MUSHROOM, RenderLayer.getCutout());
     }
 }

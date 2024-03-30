@@ -20,6 +20,7 @@ public class ModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         this.registerMushroom(blockStateModelGenerator, Mushrooms.STONE_MUSHROOM.block());
         this.registerMushroom(blockStateModelGenerator, Mushrooms.COAL_MUSHROOM.block());
+        this.registerMushroom(blockStateModelGenerator, Mushrooms.IRON_MUSHROOM.block());
     }
 
     @Override
@@ -29,6 +30,9 @@ public class ModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(Mushrooms.COAL_MUSHROOM.spores(), Models.GENERATED);
         itemModelGenerator.register(Mushrooms.COAL_MUSHROOM.head(), Models.GENERATED);
+
+        itemModelGenerator.register(Mushrooms.IRON_MUSHROOM.spores(), Models.GENERATED);
+        itemModelGenerator.register(Mushrooms.IRON_MUSHROOM.head(), Models.GENERATED);
     }
 
     private void registerMushroom(BlockStateModelGenerator blockStateModelGenerator, Block block) {

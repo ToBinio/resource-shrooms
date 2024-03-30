@@ -24,6 +24,9 @@ public class ModItemGroups {
 
                 entries.add(Mushrooms.COAL_MUSHROOM.spores());
                 entries.add(Mushrooms.COAL_MUSHROOM.head());
+
+                entries.add(Mushrooms.IRON_MUSHROOM.spores());
+                entries.add(Mushrooms.IRON_MUSHROOM.head());
             })
             .build());
 

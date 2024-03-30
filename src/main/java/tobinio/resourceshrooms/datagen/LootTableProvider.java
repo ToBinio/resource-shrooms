@@ -34,6 +34,7 @@ public class LootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         addDrop(Mushrooms.STONE_MUSHROOM.block(), mushroomLootTable(Mushrooms.STONE_MUSHROOM));
         addDrop(Mushrooms.COAL_MUSHROOM.block(), mushroomLootTable(Mushrooms.COAL_MUSHROOM));
+        addDrop(Mushrooms.IRON_MUSHROOM.block(), mushroomLootTable(Mushrooms.IRON_MUSHROOM));
     }
 
     private LootTable.Builder mushroomLootTable(Mushroom mushroom) {

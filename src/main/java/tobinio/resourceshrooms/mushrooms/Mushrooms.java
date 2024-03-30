@@ -16,6 +16,7 @@ public class Mushrooms {
 
     public static final Mushroom STONE_MUSHROOM = register("stone");
     public static final Mushroom COAL_MUSHROOM = register("coal");
+    public static final Mushroom IRON_MUSHROOM = register("iron");
 
 
     public static Mushroom register(String name) {
@@ -33,5 +34,6 @@ public class Mushrooms {
     public static void initializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(STONE_MUSHROOM.block(), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(COAL_MUSHROOM.block(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(IRON_MUSHROOM.block(), RenderLayer.getCutout());
     }
 }

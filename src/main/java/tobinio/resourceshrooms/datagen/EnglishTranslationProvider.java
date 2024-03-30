@@ -22,6 +22,10 @@ public class EnglishTranslationProvider extends FabricLanguageProvider {
         translationBuilder.add(Mushrooms.COAL_MUSHROOM.spores(), "Coal Mushroom Spores");
         translationBuilder.add(Mushrooms.COAL_MUSHROOM.head(), "Coal Mushroom Head");
 
+        translationBuilder.add(Mushrooms.IRON_MUSHROOM.block(), "Iron Mushroom");
+        translationBuilder.add(Mushrooms.IRON_MUSHROOM.spores(), "Iron Mushroom Spores");
+        translationBuilder.add(Mushrooms.IRON_MUSHROOM.head(), "Iron Mushroom Head");
+
         translationBuilder.add(ModItemGroups.ITEM_GROUP_KEY, "Resource Mushroom");
     }
 }

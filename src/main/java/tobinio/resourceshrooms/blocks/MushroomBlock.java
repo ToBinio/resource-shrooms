@@ -14,10 +14,14 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import tobinio.resourceshrooms.ResourceShrooms;
+import tobinio.resourceshrooms.mutations.Mutation;
+import tobinio.resourceshrooms.mutations.Mutations;
 import tobinio.resourceshrooms.tags.ModTags;
 
 import java.security.PublicKey;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MushroomBlock extends Block {
 
@@ -62,18 +66,35 @@ public class MushroomBlock extends Block {
 
         if (canPlaceAt(this.getDefaultState(), world, goalPosition) && world.getBlockState(goalPosition)
                 .isOf(Blocks.AIR)) {
-            world.setBlockState(goalPosition, getOffSpring(random));
+            world.setBlockState(goalPosition, getOffSpring(world, goalPosition, random));
         }
     }
 
-    private BlockState getOffSpring(Random random) {
-        List<Block> blocks = ResourceShrooms.mutations.get(this);
+    private BlockState getOffSpring(ServerWorld world, BlockPos goalPos, Random random) {
 
-        if (blocks == null || blocks.isEmpty() || random.nextBetween(0, 20) != 0) {
+        Set<Block> neighbors = getNeighbors(world, goalPos);
+        List<Mutation> blocks = Mutations.getPossibleMutations(this, neighbors);
+
+        if (blocks.isEmpty() || random.nextBetween(0, 1) != 0) {
             return this.getDefaultState();
         }
 
-        return blocks.get(random.nextBetween(0, blocks.size() - 1)).getDefaultState();
+        return blocks.get(random.nextBetween(0, blocks.size() - 1)).result().block().getDefaultState();
+    }
+
+    private Set<Block> getNeighbors(ServerWorld world, BlockPos pos) {
+
+        HashSet<Block> blocks = new HashSet<>();
+
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    blocks.add(world.getBlockState(pos.add(x, y, z)).getBlock());
+                }
+            }
+        }
+
+        return blocks;
     }
 
     @Override

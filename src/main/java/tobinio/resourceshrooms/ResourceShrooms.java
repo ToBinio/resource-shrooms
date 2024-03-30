@@ -6,6 +6,7 @@ import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.items.ModItemGroups;
 import tobinio.resourceshrooms.items.ModItems;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
+import tobinio.resourceshrooms.mutations.Mutations;
 import tobinio.resourceshrooms.tags.ModTags;
 
 import java.util.HashMap;
@@ -16,17 +17,14 @@ public class ResourceShrooms implements ModInitializer {
 
     public static String MOD_ID = "resourceshrooms";
 
-    public static Map<Block, List<Block>> mutations;
-
     @Override
     public void onInitialize() {
         ModItems.initialize();
         ModBlocks.initialize();
         ModTags.initialize();
         ModItemGroups.initialize();
-        Mushrooms.initialize();
 
-        mutations = new HashMap<>();
-        mutations.put(Mushrooms.STONE_MUSHROOM.block(), List.of(Mushrooms.COAL_MUSHROOM.block()));
+        Mushrooms.initialize();
+        Mutations.initialize();
     }
 }

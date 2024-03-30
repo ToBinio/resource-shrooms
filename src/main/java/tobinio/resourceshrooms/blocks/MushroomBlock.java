@@ -13,9 +13,11 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import tobinio.resourceshrooms.ResourceShrooms;
 import tobinio.resourceshrooms.tags.ModTags;
 
 import java.security.PublicKey;
+import java.util.List;
 
 public class MushroomBlock extends Block {
 
@@ -60,8 +62,18 @@ public class MushroomBlock extends Block {
 
         if (canPlaceAt(this.getDefaultState(), world, goalPosition) && world.getBlockState(goalPosition)
                 .isOf(Blocks.AIR)) {
-            world.setBlockState(goalPosition, this.getDefaultState());
+            world.setBlockState(goalPosition, getOffSpring(random));
         }
+    }
+
+    private BlockState getOffSpring(Random random) {
+        List<Block> blocks = ResourceShrooms.mutations.get(this);
+
+        if (blocks == null || blocks.isEmpty() || random.nextBetween(0, 20) != 0) {
+            return this.getDefaultState();
+        }
+
+        return blocks.get(random.nextBetween(0, blocks.size() - 1)).getDefaultState();
     }
 
     @Override

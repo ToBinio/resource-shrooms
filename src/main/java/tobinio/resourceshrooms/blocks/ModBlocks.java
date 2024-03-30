@@ -44,7 +44,7 @@ public class ModBlocks {
                 .nonOpaque()
                 .ticksRandomly()
                 .offset(AbstractBlock.OffsetType.XZ)
-                .pistonBehavior(PistonBehavior.DESTROY)), name, true);
+                .pistonBehavior(PistonBehavior.DESTROY)), name, false);
     }
 
 

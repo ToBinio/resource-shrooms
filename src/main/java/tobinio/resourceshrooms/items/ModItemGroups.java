@@ -18,8 +18,11 @@ public class ModItemGroups {
             .displayName(Text.translatable(ITEM_GROUP_KEY))
             .icon(() -> new ItemStack(ModBlocks.STONE_MUSHROOM))
             .entries((displayContext, entries) -> {
-                entries.add(ModBlocks.COAL_MUSHROOM);
-                entries.add(ModBlocks.STONE_MUSHROOM);
+                entries.add(ModItems.STONE_MUSHROOM_SPORES);
+                entries.add(ModItems.STONE_MUSHROOM_HEAD);
+
+                entries.add(ModItems.COAL_MUSHROOM_SPORES);
+                entries.add(ModItems.COAL_MUSHROOM_HEAD);
             })
             .build());
 

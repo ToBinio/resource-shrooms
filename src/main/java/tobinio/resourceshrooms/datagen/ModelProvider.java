@@ -8,6 +8,7 @@ import net.minecraft.data.client.*;
 import net.minecraft.util.Identifier;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.blocks.MushroomBlock;
+import tobinio.resourceshrooms.items.ModItems;
 
 public class ModelProvider extends FabricModelProvider {
     public ModelProvider(FabricDataOutput output) {
@@ -22,7 +23,11 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModItems.STONE_MUSHROOM_SPORES, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STONE_MUSHROOM_HEAD, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.COAL_MUSHROOM_SPORES, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COAL_MUSHROOM_HEAD, Models.GENERATED);
     }
 
     private void registerMushroom(BlockStateModelGenerator blockStateModelGenerator, Block block) {
@@ -30,8 +35,6 @@ public class ModelProvider extends FabricModelProvider {
             Identifier identifier = blockStateModelGenerator.createSubModel(block, "_stage" + integer, Models.CROSS, TextureMap::cross);
             return BlockStateVariant.create().put(VariantSettings.MODEL, identifier);
         });
-
-        blockStateModelGenerator.registerItemModel(block, "_stage" + MushroomBlock.MAX_AGE);
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
                 .coordinate(blockStateVariantMap));

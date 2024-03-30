@@ -19,10 +19,6 @@ import tobinio.resourceshrooms.items.ModItems;
 
 public class ModBlocks {
 
-    public static final MushroomBlock STONE_MUSHROOM = registerMushroom("stone_mushroom");
-    public static final MushroomBlock COAL_MUSHROOM = registerMushroom("coal_mushroom");
-
-
     public static <T extends Block> T register(T block, String name, boolean shouldRegisterItem) {
         Identifier id = new Identifier(ResourceShrooms.MOD_ID, name);
 
@@ -49,10 +45,5 @@ public class ModBlocks {
 
 
     public static void initialize() {
-    }
-
-    public static void initializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(STONE_MUSHROOM, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(COAL_MUSHROOM, RenderLayer.getCutout());
     }
 }

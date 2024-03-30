@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.blocks.MushroomBlock;
 import tobinio.resourceshrooms.items.ModItems;
+import tobinio.resourceshrooms.mushrooms.Mushrooms;
 
 public class ModelProvider extends FabricModelProvider {
     public ModelProvider(FabricDataOutput output) {
@@ -17,17 +18,17 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        this.registerMushroom(blockStateModelGenerator, ModBlocks.STONE_MUSHROOM);
-        this.registerMushroom(blockStateModelGenerator, ModBlocks.COAL_MUSHROOM);
+        this.registerMushroom(blockStateModelGenerator, Mushrooms.STONE_MUSHROOM.block());
+        this.registerMushroom(blockStateModelGenerator, Mushrooms.COAL_MUSHROOM.block());
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(ModItems.STONE_MUSHROOM_SPORES, Models.GENERATED);
-        itemModelGenerator.register(ModItems.STONE_MUSHROOM_HEAD, Models.GENERATED);
+        itemModelGenerator.register(Mushrooms.STONE_MUSHROOM.spores(), Models.GENERATED);
+        itemModelGenerator.register(Mushrooms.STONE_MUSHROOM.head(), Models.GENERATED);
 
-        itemModelGenerator.register(ModItems.COAL_MUSHROOM_SPORES, Models.GENERATED);
-        itemModelGenerator.register(ModItems.COAL_MUSHROOM_HEAD, Models.GENERATED);
+        itemModelGenerator.register(Mushrooms.COAL_MUSHROOM.spores(), Models.GENERATED);
+        itemModelGenerator.register(Mushrooms.COAL_MUSHROOM.head(), Models.GENERATED);
     }
 
     private void registerMushroom(BlockStateModelGenerator blockStateModelGenerator, Block block) {

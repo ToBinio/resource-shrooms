@@ -10,19 +10,20 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import tobinio.resourceshrooms.ResourceShrooms;
 import tobinio.resourceshrooms.blocks.ModBlocks;
+import tobinio.resourceshrooms.mushrooms.Mushrooms;
 
 public class ModItemGroups {
 
     public static final String ITEM_GROUP_KEY = "itemGroup.%s.resourceShrooms".formatted(ResourceShrooms.MOD_ID);
     public static final ItemGroup ITEM_GROUP = Registry.register(Registries.ITEM_GROUP, new Identifier(ResourceShrooms.MOD_ID, "item_group"), FabricItemGroup.builder()
             .displayName(Text.translatable(ITEM_GROUP_KEY))
-            .icon(() -> new ItemStack(ModBlocks.STONE_MUSHROOM))
+            .icon(() -> new ItemStack(Mushrooms.COAL_MUSHROOM.block()))
             .entries((displayContext, entries) -> {
-                entries.add(ModItems.STONE_MUSHROOM_SPORES);
-                entries.add(ModItems.STONE_MUSHROOM_HEAD);
+                entries.add(Mushrooms.STONE_MUSHROOM.spores());
+                entries.add(Mushrooms.STONE_MUSHROOM.head());
 
-                entries.add(ModItems.COAL_MUSHROOM_SPORES);
-                entries.add(ModItems.COAL_MUSHROOM_HEAD);
+                entries.add(Mushrooms.COAL_MUSHROOM.spores());
+                entries.add(Mushrooms.COAL_MUSHROOM.head());
             })
             .build());
 

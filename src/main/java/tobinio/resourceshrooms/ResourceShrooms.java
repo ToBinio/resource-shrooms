@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.items.ModItemGroups;
 import tobinio.resourceshrooms.items.ModItems;
+import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import tobinio.resourceshrooms.tags.ModTags;
 
 import java.util.HashMap;
@@ -23,9 +24,9 @@ public class ResourceShrooms implements ModInitializer {
         ModBlocks.initialize();
         ModTags.initialize();
         ModItemGroups.initialize();
+        Mushrooms.initialize();
 
         mutations = new HashMap<>();
-
-        mutations.put(ModBlocks.STONE_MUSHROOM, List.of(ModBlocks.COAL_MUSHROOM));
+        mutations.put(Mushrooms.STONE_MUSHROOM.block(), List.of(Mushrooms.COAL_MUSHROOM.block()));
     }
 }

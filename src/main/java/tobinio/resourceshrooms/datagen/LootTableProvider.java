@@ -19,6 +19,8 @@ import net.minecraft.predicate.StatePredicate;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.blocks.MushroomBlock;
 import tobinio.resourceshrooms.items.ModItems;
+import tobinio.resourceshrooms.mushrooms.Mushroom;
+import tobinio.resourceshrooms.mushrooms.Mushrooms;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,19 +32,19 @@ public class LootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(ModBlocks.STONE_MUSHROOM, mushroomLootTable(ModBlocks.STONE_MUSHROOM, ModItems.STONE_MUSHROOM_SPORES, ModItems.STONE_MUSHROOM_HEAD));
-        addDrop(ModBlocks.COAL_MUSHROOM, mushroomLootTable(ModBlocks.COAL_MUSHROOM, ModItems.COAL_MUSHROOM_SPORES, ModItems.COAL_MUSHROOM_HEAD));
+        addDrop(Mushrooms.STONE_MUSHROOM.block(), mushroomLootTable(Mushrooms.STONE_MUSHROOM));
+        addDrop(Mushrooms.COAL_MUSHROOM.block(), mushroomLootTable(Mushrooms.COAL_MUSHROOM));
     }
 
-    private LootTable.Builder mushroomLootTable(Block block, Item spores, Item head) {
+    private LootTable.Builder mushroomLootTable(Mushroom mushroom) {
         LootPool SporesLootPools = LootPool.builder()
-                .with(ItemEntry.builder(spores)
+                .with(ItemEntry.builder(mushroom.spores())
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.f, 1.f))))
                 .build();
 
         LootPool HeadLootPools = LootPool.builder()
-                .with(ItemEntry.builder(head)
-                        .conditionally(BlockStatePropertyLootCondition.builder(block)
+                .with(ItemEntry.builder(mushroom.head())
+                        .conditionally(BlockStatePropertyLootCondition.builder(mushroom.block())
                                 .properties(StatePredicate.Builder.create().exactMatch(MushroomBlock.AGE, 2)))
                         .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1))))
                 .build();

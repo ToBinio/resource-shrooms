@@ -5,7 +5,7 @@ import tobinio.resourceshrooms.mushrooms.Mushroom;
 
 import java.util.Collection;
 
-public record Mutation(Collection<Block> requirements, Mushroom result) {
+public record Mutation(Collection<Block> requirements, Mushroom result, int chance) {
 
     public boolean fits(Collection<Block> blocks) {
         for (Block requirement : requirements) {
@@ -13,7 +13,7 @@ public record Mutation(Collection<Block> requirements, Mushroom result) {
                 return false;
             }
         }
-        
+
         return true;
     }
 

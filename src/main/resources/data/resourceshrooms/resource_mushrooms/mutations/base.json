@@ -1,13 +1,22 @@
 {
   "stone": {
-    "coal": [],
-    "iron": [
-      "resourceshrooms:coal_mushroom"
-    ]
+    "coal": {
+      "chance": 5,
+      "requirements": []
+    },
+    "iron": {
+      "chance": 2,
+      "requirements": [
+        "resourceshrooms:coal_mushroom"
+      ]
+    }
   },
   "coal": {
-    "iron": [
-      "resourceshrooms:stone_mushroom"
-    ]
+    "iron": {
+      "chance": 2,
+      "requirements": [
+        "resourceshrooms:stone_mushroom"
+      ]
+    }
   }
 }

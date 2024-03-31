@@ -73,13 +73,29 @@ public class MushroomBlock extends Block {
     private BlockState getOffSpring(ServerWorld world, BlockPos goalPos, Random random) {
 
         Set<Block> neighbors = getNeighbors(world, goalPos);
-        List<Mutation> blocks = Mutations.getPossibleMutations(this, neighbors);
+        List<Mutation> mutations = Mutations.getPossibleMutations(this, neighbors);
 
-        if (blocks.isEmpty() || random.nextBetween(0, 1) != 0) {
-            return this.getDefaultState();
+        var weight = 0;
+
+        for (Mutation mutation : mutations) {
+            weight += mutation.chance();
         }
 
-        return blocks.get(random.nextBetween(0, blocks.size() - 1)).result().block().getDefaultState();
+        weight = Math.max(weight, 100);
+
+        var rng = random.nextBetween(1, weight);
+
+        var currentWeight = 0;
+
+        for (Mutation mutation : mutations) {
+            currentWeight += mutation.chance();
+
+            if (rng <= currentWeight) {
+                return mutation.result().block().getDefaultState();
+            }
+        }
+
+        return this.getDefaultState();
     }
 
     private Set<Block> getNeighbors(ServerWorld world, BlockPos pos) {

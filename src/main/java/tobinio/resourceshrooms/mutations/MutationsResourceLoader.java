@@ -30,8 +30,7 @@ public class MutationsResourceLoader implements SimpleSynchronousResourceReloadL
         Mutations.clear();
 
         for (Map.Entry<Identifier, Resource> resource : manager.findResources("resource_mushrooms/mutations", path -> path.getPath()
-                        .endsWith(".json"))
-                .entrySet()) {
+                .endsWith(".json")).entrySet()) {
 
             ResourceShrooms.LOGGER.info("parsing %s".formatted(resource.getKey()));
 
@@ -72,9 +71,11 @@ public class MutationsResourceLoader implements SimpleSynchronousResourceReloadL
 
             if (mushroom.isPresent()) {
 
+                JsonObject base = element.getValue().getAsJsonObject();
+
                 List<Block> requirements = new ArrayList<>();
 
-                for (JsonElement rawBlock : element.getValue().getAsJsonArray()) {
+                for (JsonElement rawBlock : base.get("requirements").getAsJsonArray()) {
                     Optional<Block> block = stringToBlock(rawBlock.getAsString());
 
                     if (block.isPresent()) {
@@ -84,7 +85,9 @@ public class MutationsResourceLoader implements SimpleSynchronousResourceReloadL
                     }
                 }
 
-                mutations.add(new Mutation(requirements, mushroom.get()));
+                int chance = base.get("chance").getAsInt();
+
+                mutations.add(new Mutation(requirements, mushroom.get(), chance));
             } else {
                 ResourceShrooms.LOGGER.error("No mushroom found with name %s".formatted(element.getKey()));
             }

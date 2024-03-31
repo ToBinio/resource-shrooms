@@ -13,19 +13,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mushrooms {
+    public static final List<Mushroom> ALL = new ArrayList<>();
 
-    public static final Mushroom STONE_MUSHROOM = register("stone");
-    public static final Mushroom COAL_MUSHROOM = register("coal");
-    public static final Mushroom IRON_MUSHROOM = register("iron");
+    public static final Mushroom STONE_MUSHROOM = register("Stone");
+    public static final Mushroom COAL_MUSHROOM = register("Coal");
+    public static final Mushroom IRON_MUSHROOM = register("Iron");
 
 
-    public static Mushroom register(String name) {
+    public static Mushroom register(String displayName) {
+
+        var name = displayName.toLowerCase();
+
         MushroomBlock block = ModBlocks.registerMushroom("%s_mushroom".formatted(name));
 
         Item spores = ModItems.register(new AliasedBlockItem(block, new FabricItemSettings()), "%s_mushroom_spores".formatted(name));
         Item head = ModItems.register(new Item(new FabricItemSettings()), "%s_mushroom_head".formatted(name));
 
-        return new Mushroom(block, spores, head);
+        Mushroom mushroom = new Mushroom(displayName, block, spores, head);
+
+        ALL.add(mushroom);
+
+        return mushroom;
     }
 
     public static void initialize() {

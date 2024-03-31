@@ -11,10 +11,14 @@ public class Mutations {
     public static Map<Block, List<Mutation>> mutations = new HashMap<>();
 
     public static void initialize() {
-        addMutation(Mushrooms.STONE_MUSHROOM, new Mutation(List.of(), Mushrooms.COAL_MUSHROOM));
-        addMutation(Mushrooms.STONE_MUSHROOM, new Mutation(List.of(Mushrooms.COAL_MUSHROOM.block()), Mushrooms.IRON_MUSHROOM));
+//        addMutation(Mushrooms.STONE_MUSHROOM, new Mutation(List.of(), Mushrooms.COAL_MUSHROOM));
+//        addMutation(Mushrooms.STONE_MUSHROOM, new Mutation(List.of(Mushrooms.COAL_MUSHROOM.block()), Mushrooms.IRON_MUSHROOM));
+//
+//        addMutation(Mushrooms.COAL_MUSHROOM, new Mutation(List.of(Mushrooms.STONE_MUSHROOM.block()), Mushrooms.IRON_MUSHROOM));
+    }
 
-        addMutation(Mushrooms.COAL_MUSHROOM, new Mutation(List.of(Mushrooms.STONE_MUSHROOM.block()), Mushrooms.IRON_MUSHROOM));
+    public static void clear() {
+        mutations.clear();
     }
 
     public static void addMutation(Mushroom mushroom, Mutation mutation) {

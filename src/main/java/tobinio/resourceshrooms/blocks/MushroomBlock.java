@@ -75,7 +75,7 @@ public class MushroomBlock extends Block {
         Set<Block> neighbors = getNeighbors(world, goalPos);
         List<Mutation> blocks = Mutations.getPossibleMutations(this, neighbors);
 
-        if (blocks.isEmpty() || random.nextBetween(0, 20) != 0) {
+        if (blocks.isEmpty() || random.nextBetween(0, 1) != 0) {
             return this.getDefaultState();
         }
 

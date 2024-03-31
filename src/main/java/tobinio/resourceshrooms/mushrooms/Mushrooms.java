@@ -11,6 +11,7 @@ import tobinio.resourceshrooms.items.ModItems;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Mushrooms {
     public static final List<Mushroom> ALL = new ArrayList<>();
@@ -34,6 +35,16 @@ public class Mushrooms {
         ALL.add(mushroom);
 
         return mushroom;
+    }
+
+    public static Optional<Mushroom> getFromString(String name) {
+        for (Mushroom mushroom : ALL) {
+            if (mushroom.displayName().equalsIgnoreCase(name)) {
+                return Optional.of(mushroom);
+            }
+        }
+
+        return Optional.empty();
     }
 
     public static void initialize() {

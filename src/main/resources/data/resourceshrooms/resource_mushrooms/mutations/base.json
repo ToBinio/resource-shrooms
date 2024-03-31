@@ -1,0 +1,13 @@
+{
+  "stone": {
+    "coal": [],
+    "iron": [
+      "resourceshrooms:coal_mushroom"
+    ]
+  },
+  "coal": {
+    "iron": [
+      "resourceshrooms:stone_mushroom"
+    ]
+  }
+}

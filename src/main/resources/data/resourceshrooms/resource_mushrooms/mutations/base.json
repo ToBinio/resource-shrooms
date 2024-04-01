@@ -1,4 +1,18 @@
 {
+  "dirt": {
+    "gravel": {
+      "chance": 10,
+      "requirements": []
+    }
+  },
+  "gravel": {
+    "stone": {
+      "chance": 20,
+      "requirements": [
+        "minecraft:gravel"
+      ]
+    }
+  },
   "stone": {
     "coal": {
       "chance": 5,

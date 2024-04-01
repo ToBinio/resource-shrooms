@@ -1,12 +1,11 @@
 ```mermaid
 graph TD
-    Dirt(Dirt)
-    Gravel
+    Dirt([Dirt])
+    Gravel{{Gravel}}
     Stone{{Stone}}
     Coal{{Coal}}
     Iron{{Iron}}
-    Fire
-    Lava
+    Magma
     Netherrack
     Quartz
     Sand
@@ -16,6 +15,8 @@ graph TD
     Diamond
     Emerald
     Lapis
+    Amethyst
+    Redstone
     
     Dirt --> Gravel
     
@@ -23,25 +24,23 @@ graph TD
 
     Stone --> Coal
 
-    Stone --> Iron
     Coal --> Iron
+    Stone --> Iron
 
-    Coal -- fire block --> Fire
+    Stone -- lava block --> Magma
 
-    Fire -- lava block --> Lava
-
-    Lava --> Netherrack
+    Magma --> Netherrack
     Stone --> Netherrack
     
     Sand --> Quartz
-    Lava --> Quartz
+    Magma --> Quartz
     
-    Stone -- water block --> Sand
+    Gravel -- water block --> Sand
     
+    Magma --> Diamond
     Coal --> Diamond
-    Lava --> Diamond
     
-    Quartz --> Emerald
-    Lava --> Emerald
+    Quartz --> Amethyst
+    Magma --> Amethyst
 ```
 

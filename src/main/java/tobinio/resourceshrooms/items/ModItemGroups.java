@@ -27,6 +27,12 @@ public class ModItemGroups {
 
                 entries.add(Mushrooms.IRON_MUSHROOM.spores());
                 entries.add(Mushrooms.IRON_MUSHROOM.head());
+
+                entries.add(Mushrooms.DIRT_MUSHROOM.spores());
+                entries.add(Mushrooms.DIRT_MUSHROOM.head());
+
+                entries.add(Mushrooms.GRAVEL_MUSHROOM.spores());
+                entries.add(Mushrooms.GRAVEL_MUSHROOM.head());
             })
             .build());
 

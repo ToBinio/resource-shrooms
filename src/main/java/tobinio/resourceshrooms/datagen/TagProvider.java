@@ -16,6 +16,11 @@ public class TagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         //todo more blocks
-        getOrCreateTagBuilder(ModTags.RESOURCE_MUSHROOM_GROW_BLOCK).add(Blocks.GRASS_BLOCK).add(Blocks.DIRT);
+        getOrCreateTagBuilder(ModTags.MUSHROOM_GROW_BLOCK).add(Blocks.GRASS_BLOCK)
+                .add(Blocks.DIRT)
+                .add(Blocks.MOSS_BLOCK)
+                .add(Blocks.MYCELIUM);
+        getOrCreateTagBuilder(ModTags.MUSHROOM_MUTATION_BLOCK).add(Blocks.MOSS_BLOCK);
+        getOrCreateTagBuilder(ModTags.MUSHROOM_STABLE_BLOCK).add(Blocks.MYCELIUM);
     }
 }

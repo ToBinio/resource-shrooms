@@ -1,6 +1,5 @@
 package tobinio.resourceshrooms.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -13,12 +12,10 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import tobinio.resourceshrooms.ResourceShrooms;
 import tobinio.resourceshrooms.mutations.Mutation;
 import tobinio.resourceshrooms.mutations.Mutations;
 import tobinio.resourceshrooms.tags.ModTags;
 
-import java.security.PublicKey;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -47,7 +44,7 @@ public class MushroomBlock extends Block {
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockPos down = pos.down();
-        return world.getBlockState(down).isIn(ModTags.RESOURCE_MUSHROOM_GROW_BLOCK);
+        return world.getBlockState(down).isIn(ModTags.MUSHROOM_GROW_BLOCK);
     }
 
     @Override
@@ -72,13 +69,20 @@ public class MushroomBlock extends Block {
 
     private BlockState getOffSpring(ServerWorld world, BlockPos goalPos, Random random) {
 
+        //stable ground do not mutate
+        if (world.getBlockState(goalPos.down()).isIn(ModTags.MUSHROOM_STABLE_BLOCK)) {
+            return this.getDefaultState();
+        }
+
         Set<Block> neighbors = getNeighbors(world, goalPos);
         List<Mutation> mutations = Mutations.getPossibleMutations(this, neighbors);
+
+        var mutationsGround = world.getBlockState(goalPos.down()).isIn(ModTags.MUSHROOM_MUTATION_BLOCK);
 
         var weight = 0;
 
         for (Mutation mutation : mutations) {
-            weight += mutation.chance();
+            weight += mutationsGround ? mutation.chance() * 2 : mutation.chance();
         }
 
         weight = Math.max(weight, 100);
@@ -88,7 +92,7 @@ public class MushroomBlock extends Block {
         var currentWeight = 0;
 
         for (Mutation mutation : mutations) {
-            currentWeight += mutation.chance();
+            currentWeight += mutationsGround ? mutation.chance() * 2 : mutation.chance();
 
             if (rng <= currentWeight) {
                 return mutation.result().block().getDefaultState();

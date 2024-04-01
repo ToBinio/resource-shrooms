@@ -10,6 +10,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import tobinio.resourceshrooms.ResourceShrooms;
 import tobinio.resourceshrooms.blocks.ModBlocks;
+import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
 
 public class ModItemGroups {
@@ -19,20 +20,10 @@ public class ModItemGroups {
             .displayName(Text.translatable(ITEM_GROUP_KEY))
             .icon(() -> new ItemStack(Mushrooms.COAL_MUSHROOM.block()))
             .entries((displayContext, entries) -> {
-                entries.add(Mushrooms.STONE_MUSHROOM.spores());
-                entries.add(Mushrooms.STONE_MUSHROOM.head());
-
-                entries.add(Mushrooms.COAL_MUSHROOM.spores());
-                entries.add(Mushrooms.COAL_MUSHROOM.head());
-
-                entries.add(Mushrooms.IRON_MUSHROOM.spores());
-                entries.add(Mushrooms.IRON_MUSHROOM.head());
-
-                entries.add(Mushrooms.DIRT_MUSHROOM.spores());
-                entries.add(Mushrooms.DIRT_MUSHROOM.head());
-
-                entries.add(Mushrooms.GRAVEL_MUSHROOM.spores());
-                entries.add(Mushrooms.GRAVEL_MUSHROOM.head());
+                for (Mushroom mushroom : Mushrooms.ALL) {
+                    entries.add(mushroom.spores());
+                    entries.add(mushroom.head());
+                }
             })
             .build());
 

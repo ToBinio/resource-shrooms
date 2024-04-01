@@ -23,6 +23,12 @@
       "requirements": [
         "resourceshrooms:coal_mushroom"
       ]
+    },
+    "netherrack": {
+      "chance": 10,
+      "requirements": [
+        "minecraft:lava"
+      ]
     }
   },
   "coal": {
@@ -30,6 +36,14 @@
       "chance": 2,
       "requirements": [
         "resourceshrooms:stone_mushroom"
+      ]
+    }
+  },
+  "netherrack": {
+    "magma": {
+      "chance": 10,
+      "requirements": [
+        "minecraft:lava"
       ]
     }
   }

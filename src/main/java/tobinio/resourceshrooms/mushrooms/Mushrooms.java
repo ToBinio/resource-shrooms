@@ -21,6 +21,8 @@ public class Mushrooms {
     public static final Mushroom IRON_MUSHROOM = register("Iron");
     public static final Mushroom DIRT_MUSHROOM = register("Dirt");
     public static final Mushroom GRAVEL_MUSHROOM = register("Gravel");
+    public static final Mushroom MAGMA_MUSHROOM = register("Magma");
+    public static final Mushroom NETHERRACK_MUSHROOM = register("Netherrack");
 
 
     public static Mushroom register(String displayName) {
@@ -53,10 +55,8 @@ public class Mushrooms {
     }
 
     public static void initializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(STONE_MUSHROOM.block(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(COAL_MUSHROOM.block(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(IRON_MUSHROOM.block(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DIRT_MUSHROOM.block(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(GRAVEL_MUSHROOM.block(), RenderLayer.getCutout());
+        for (Mushroom mushroom : ALL) {
+            BlockRenderLayerMap.INSTANCE.putBlock(mushroom.block(), RenderLayer.getCutout());
+        }
     }
 }

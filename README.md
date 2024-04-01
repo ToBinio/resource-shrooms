@@ -5,12 +5,13 @@ graph TD
     Stone{{Stone}}
     Coal{{Coal}}
     Iron{{Iron}}
-    Magma
-    Netherrack
+    Magma{{Magma}}
+    Netherrack{{Netherrack}}
     Quartz
     Sand
-
+    Moss
     Copper
+
     Gold
     Diamond
     Emerald
@@ -20,17 +21,19 @@ graph TD
     
     Dirt --> Gravel
     
+    Dirt --> Moss
+    
     Gravel -- gravel block --> Stone
 
     Stone --> Coal
 
-    Coal --> Iron
     Stone --> Iron
+    Coal --> Iron
+    
+    Iron --> Copper
+    Moss --> Copper
 
-    Stone -- lava block --> Magma
-
-    Magma --> Netherrack
-    Stone --> Netherrack
+    Stone -- Lava block --> Netherrack
     
     Sand --> Quartz
     Magma --> Quartz
@@ -39,6 +42,8 @@ graph TD
     
     Magma --> Diamond
     Coal --> Diamond
+    
+    Netherrack -- lava block --> Magma
     
     Quartz --> Amethyst
     Magma --> Amethyst

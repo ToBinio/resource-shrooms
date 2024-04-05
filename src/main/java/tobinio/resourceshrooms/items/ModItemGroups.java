@@ -22,6 +22,8 @@ public class ModItemGroups {
             .entries((displayContext, entries) -> {
                 for (Mushroom mushroom : Mushrooms.ALL) {
                     entries.add(mushroom.spores());
+                }
+                for (Mushroom mushroom : Mushrooms.ALL) {
                     entries.add(mushroom.head());
                 }
             })

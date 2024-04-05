@@ -5,12 +5,16 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.data.client.*;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import tobinio.resourceshrooms.ResourceShrooms;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.blocks.MushroomBlock;
 import tobinio.resourceshrooms.items.ModItems;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
+
+import java.util.Optional;
 
 public class ModelProvider extends FabricModelProvider {
     public ModelProvider(FabricDataOutput output) {
@@ -29,6 +33,9 @@ public class ModelProvider extends FabricModelProvider {
         for (Mushroom mushroom : Mushrooms.ALL) {
             itemModelGenerator.register(mushroom.spores(), Models.GENERATED);
             itemModelGenerator.register(mushroom.head(), Models.GENERATED);
+            itemModelGenerator.register(mushroom.blockItem(), Models.GENERATED);
+//            itemModelGenerator.register(mushroom.blockItem(), new Model(Optional.of(new Identifier(ResourceShrooms.MOD_ID, "block/%s_mushroom_stage%s".formatted(mushroom.displayName()
+//                    .toLowerCase(), MushroomBlock.MAX_AGE))), Optional.empty()));
         }
     }
 

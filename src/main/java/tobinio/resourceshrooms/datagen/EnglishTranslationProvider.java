@@ -24,6 +24,7 @@ public class EnglishTranslationProvider extends FabricLanguageProvider {
 
     public void translateMushroom(TranslationBuilder translationBuilder, Mushroom mushroom) {
         translationBuilder.add(mushroom.block(), "%s Mushroom".formatted(mushroom.displayName()));
+        translationBuilder.add(mushroom.blockItem(), "%s Mushroom".formatted(mushroom.displayName()));
         translationBuilder.add(mushroom.spores(), "%s Mushroom Spores".formatted(mushroom.displayName()));
         translationBuilder.add(mushroom.head(), "%s Mushroom Head".formatted(mushroom.displayName()));
     }

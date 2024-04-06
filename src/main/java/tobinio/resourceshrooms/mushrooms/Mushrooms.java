@@ -25,6 +25,7 @@ public class Mushrooms {
     public static final Mushroom GRAVEL_MUSHROOM = register("Gravel");
     public static final Mushroom MAGMA_MUSHROOM = register("Magma");
     public static final Mushroom NETHERRACK_MUSHROOM = register("Netherrack");
+    public static final Mushroom MOSS_MUSHROOM = register("Moss");
 
 
     public static Mushroom register(String displayName) {

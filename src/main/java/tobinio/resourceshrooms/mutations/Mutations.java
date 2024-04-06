@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Mutations {
 
-    public static Map<Block, List<Mutation>> mutations = new HashMap<>();
+    public static List<Mutation> mutations = new ArrayList<>();
 
     public static void initialize() {
     }
@@ -17,21 +17,15 @@ public class Mutations {
         mutations.clear();
     }
 
-    public static void addMutation(Mushroom mushroom, Mutation mutation) {
-        var currentMutations = mutations.getOrDefault(mushroom.block(), new ArrayList<>());
-
-        currentMutations.add(mutation);
-
-        mutations.put(mushroom.block(), currentMutations);
+    public static void addMutation(Mutation mutation) {
+        mutations.add(mutation);
     }
 
-    public static List<Mutation> getPossibleMutations(Block origin, Collection<Block> blocks) {
-        List<Mutation> mutations = Mutations.mutations.getOrDefault(origin, List.of());
-
+    public static List<Mutation> getPossibleMutations(Block origin, Collection<Block> surroundings) {
         List<Mutation> possibleMutations = new ArrayList<>();
 
         for (Mutation mutation : mutations) {
-            if (mutation.fits(blocks)) {
+            if (mutation.fits(origin, surroundings)) {
                 possibleMutations.add(mutation);
             }
         }

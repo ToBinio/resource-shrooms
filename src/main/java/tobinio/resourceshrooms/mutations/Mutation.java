@@ -8,9 +8,13 @@ import java.util.List;
 
 public record Mutation(List<Block> requirements, Mushroom result, int chance) {
 
-    public boolean fits(Collection<Block> blocks) {
+    public boolean fits(Block origin, Collection<Block> surroundings) {
+        if (!requirements.contains(origin)) {
+            return false;
+        }
+
         for (Block requirement : requirements) {
-            if (!blocks.contains(requirement)) {
+            if (!surroundings.contains(requirement)) {
                 return false;
             }
         }

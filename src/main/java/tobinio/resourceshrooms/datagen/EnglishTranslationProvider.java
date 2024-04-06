@@ -2,6 +2,7 @@ package tobinio.resourceshrooms.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import tobinio.resourceshrooms.ResourceShrooms;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.items.ModItemGroups;
 import tobinio.resourceshrooms.items.ModItems;
@@ -20,6 +21,7 @@ public class EnglishTranslationProvider extends FabricLanguageProvider {
         }
 
         translationBuilder.add(ModItemGroups.ITEM_GROUP_KEY, "Resource Mushroom");
+        translationBuilder.add("emi.category.%s.mutations".formatted(ResourceShrooms.MOD_ID), "Mushroom Mutations");
     }
 
     public void translateMushroom(TranslationBuilder translationBuilder, Mushroom mushroom) {

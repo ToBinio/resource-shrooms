@@ -39,15 +39,14 @@ public class MutationsResourceLoader implements SimpleSynchronousResourceReloadL
                 JsonObject data = JsonHelper.deserialize(fileContent);
 
                 for (Map.Entry<String, JsonElement> rawMutations : data.asMap().entrySet()) {
+                    Optional<Mushroom> result = Mushrooms.getFromString(rawMutations.getKey());
 
-                    Optional<Mushroom> origin = Mushrooms.getFromString(rawMutations.getKey());
+                    if (result.isPresent()) {
 
-                    if (origin.isPresent()) {
-
-                        List<Mutation> mutations = parse(rawMutations.getValue());
+                        List<Mutation> mutations = parseMutations(result.get(), rawMutations.getValue());
 
                         for (Mutation mutation : mutations) {
-                            Mutations.addMutation(origin.get(), mutation);
+                            Mutations.addMutation(mutation);
                         }
 
                     } else {
@@ -62,35 +61,30 @@ public class MutationsResourceLoader implements SimpleSynchronousResourceReloadL
         }
     }
 
-    private List<Mutation> parse(JsonElement jsonElement) {
+    private List<Mutation> parseMutations(Mushroom result, JsonElement jsonElement) {
         List<Mutation> mutations = new ArrayList<>();
 
-        for (Map.Entry<String, JsonElement> element : jsonElement.getAsJsonObject().asMap().entrySet()) {
+        for (JsonElement element : jsonElement.getAsJsonArray()) {
 
-            Optional<Mushroom> mushroom = Mushrooms.getFromString(element.getKey());
+            JsonObject base = element.getAsJsonObject();
 
-            if (mushroom.isPresent()) {
+            List<Block> requirements = new ArrayList<>();
 
-                JsonObject base = element.getValue().getAsJsonObject();
+            for (JsonElement rawBlock : base.get("requirements").getAsJsonArray()) {
+                Optional<Block> block = stringToBlock(rawBlock.getAsString());
 
-                List<Block> requirements = new ArrayList<>();
 
-                for (JsonElement rawBlock : base.get("requirements").getAsJsonArray()) {
-                    Optional<Block> block = stringToBlock(rawBlock.getAsString());
-
-                    if (block.isPresent()) {
-                        requirements.add(block.get());
-                    } else {
-                        ResourceShrooms.LOGGER.error("No block found with name %s".formatted(rawBlock.getAsString()));
-                    }
+                if (block.isPresent()) {
+                    requirements.add(block.get());
+                } else {
+                    ResourceShrooms.LOGGER.error("No block found with name %s".formatted(rawBlock.getAsString()));
                 }
 
-                int chance = base.get("chance").getAsInt();
-
-                mutations.add(new Mutation(requirements, mushroom.get(), chance));
-            } else {
-                ResourceShrooms.LOGGER.error("No mushroom found with name %s".formatted(element.getKey()));
             }
+
+            int chance = base.get("chance").getAsInt();
+
+            mutations.add(new Mutation(requirements, result, chance));
         }
 
         return mutations;

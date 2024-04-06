@@ -33,31 +33,25 @@ public class ModEmiPlugin implements EmiPlugin {
 
         var count = 0;
 
-        for (Map.Entry<Block, List<Mutation>> mutations : Mutations.mutations.entrySet()) {
+        for (Mutation mutation : Mutations.mutations) {
 
-            for (Mutation mutation : mutations.getValue()) {
+            count++;
 
-                count++;
+            List<EmiStack> allRequirements = new ArrayList<>();
 
-                List<Block> allRequirementsBlock = new ArrayList<>(mutation.requirements());
-                allRequirementsBlock.add(mutations.getKey());
+            for (Block block : mutation.requirements()) {
+                Optional<Mushroom> mushroom = Mushrooms.getFromBlock(block);
 
-                List<EmiStack> allRequirements = new ArrayList<>();
-
-                for (Block block : allRequirementsBlock) {
-                    Optional<Mushroom> mushroom = Mushrooms.getFromBlock(block);
-
-                    if (mushroom.isPresent()) {
-                        allRequirements.add(EmiStack.of(mushroom.get().blockItem()));
-                    } else if (block == Blocks.LAVA) {
-                        allRequirements.add(EmiStack.of(Fluids.LAVA));
-                    } else {
-                        allRequirements.add(EmiStack.of(block.asItem()));
-                    }
+                if (mushroom.isPresent()) {
+                    allRequirements.add(EmiStack.of(mushroom.get().blockItem()));
+                } else if (block == Blocks.LAVA) {
+                    allRequirements.add(EmiStack.of(Fluids.LAVA));
+                } else {
+                    allRequirements.add(EmiStack.of(block.asItem()));
                 }
-
-                registry.addRecipe(new MutationEmiRecipe(allRequirements, mutation.chance(), mutation.result(), new Identifier(ResourceShrooms.MOD_ID, "mutation_%d".formatted(count))));
             }
+
+            registry.addRecipe(new MutationEmiRecipe(allRequirements, mutation.chance(), mutation.result(), new Identifier(ResourceShrooms.MOD_ID, "mutation_%d".formatted(count))));
         }
 
     }

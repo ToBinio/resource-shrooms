@@ -9,14 +9,14 @@ graph TD
     Netherrack{{Netherrack}}
     Quartz
     Sand
-    Moss
-    Copper
+    Moss{{Moss}}
+    Copper{{Copper}}
+    Amethyst
+    Diamond
 
     Gold
-    Diamond
     Emerald
     Lapis
-    Amethyst
     Redstone
     
     Dirt --> Gravel

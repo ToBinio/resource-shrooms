@@ -15,7 +15,6 @@
       ]
     }
   ],
-
   "stone": [
     {
       "chance": 20,
@@ -39,6 +38,15 @@
       "requirements": [
         "resourceshrooms:stone_mushroom",
         "resourceshrooms:coal_mushroom"
+      ]
+    }
+  ],
+  "copper": [
+    {
+      "chance": 10,
+      "requirements": [
+        "resourceshrooms:iron_mushroom",
+        "resourceshrooms:moss_mushroom"
       ]
     }
   ],

@@ -44,7 +44,7 @@ public class MushroomBlock extends Block {
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockPos down = pos.down();
-        return world.getBlockState(down).isIn(ModTags.MUSHROOM_GROW_BLOCK);
+        return world.getBlockState(down).isIn(ModTags.Blocks.MUSHROOM_GROW_BLOCK);
     }
 
     @Override
@@ -70,14 +70,14 @@ public class MushroomBlock extends Block {
     private BlockState getOffSpring(ServerWorld world, BlockPos goalPos, Random random) {
 
         //stable ground do not mutate
-        if (world.getBlockState(goalPos.down()).isIn(ModTags.MUSHROOM_STABLE_BLOCK)) {
+        if (world.getBlockState(goalPos.down()).isIn(ModTags.Blocks.MUSHROOM_STABLE_BLOCK)) {
             return this.getDefaultState();
         }
 
         Set<Block> neighbors = getNeighbors(world, goalPos);
         List<Mutation> mutations = Mutations.getPossibleMutations(this, neighbors);
 
-        var mutationsGround = world.getBlockState(goalPos.down()).isIn(ModTags.MUSHROOM_MUTATION_BLOCK);
+        var mutationsGround = world.getBlockState(goalPos.down()).isIn(ModTags.Blocks.MUSHROOM_MUTATION_BLOCK);
 
         var weight = 0;
 

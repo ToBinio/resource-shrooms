@@ -22,6 +22,9 @@ public class EnglishTranslationProvider extends FabricLanguageProvider {
 
         translationBuilder.add(ModItemGroups.ITEM_GROUP_KEY, "Resource Mushroom");
         translationBuilder.add("emi.category.%s.mutations".formatted(ResourceShrooms.MOD_ID), "Mushroom Mutations");
+        translationBuilder.add("tag.item.%s.mushroom_grow_block".formatted(ResourceShrooms.MOD_ID), "Mushroom Grow Blocks");
+        translationBuilder.add("tag.item.%s.mushroom_stable_block".formatted(ResourceShrooms.MOD_ID), "Mushroom Stable Grow Blocks");
+        translationBuilder.add("tag.item.%s.mushroom_mutation_block".formatted(ResourceShrooms.MOD_ID), "Mushroom Mutation Grow Blocks");
     }
 
     public void translateMushroom(TranslationBuilder translationBuilder, Mushroom mushroom) {

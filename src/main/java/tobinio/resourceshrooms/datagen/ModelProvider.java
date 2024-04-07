@@ -34,8 +34,6 @@ public class ModelProvider extends FabricModelProvider {
             itemModelGenerator.register(mushroom.spores(), Models.GENERATED);
             itemModelGenerator.register(mushroom.head(), Models.GENERATED);
             itemModelGenerator.register(mushroom.blockItem(), Models.GENERATED);
-//            itemModelGenerator.register(mushroom.blockItem(), new Model(Optional.of(new Identifier(ResourceShrooms.MOD_ID, "block/%s_mushroom_stage%s".formatted(mushroom.displayName()
-//                    .toLowerCase(), MushroomBlock.MAX_AGE))), Optional.empty()));
         }
     }
 

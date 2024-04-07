@@ -13,6 +13,8 @@ import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import tobinio.resourceshrooms.mutations.Mutation;
 import tobinio.resourceshrooms.mutations.Mutations;
+import tobinio.resourceshrooms.tags.ModTags;
+import dev.emi.emi.api.recipe.EmiIngredientRecipe;
 
 import java.util.ArrayList;
 import java.util.List;

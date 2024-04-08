@@ -8,44 +8,72 @@ graph TD
     Magma{{Magma}}
     Netherrack{{Netherrack}}
     Quartz
-    Sand
+    Sand{{Sand}}
     Moss{{Moss}}
     Copper{{Copper}}
-    Amethyst
+    Amethyst{{Amethyst}}
     Diamond
-
+    Calcite
     Gold
     Emerald
     Lapis
     Redstone
+
+    MossBlock[[MossBlock]]
+    GravelBlock[[GravelBlock]]
+    LavaBlock[[LavaBlock]]
+    WaterBlock[[WaterBlock]]
     
     Dirt --> Gravel
+    GravelBlock --> Gravel
     
     Dirt --> Moss
+    MossBlock --> Moss
     
-    Gravel -- gravel block --> Stone
+    Gravel --> Stone
+    GravelBlock --> Stone
+    
+    Gravel --> Calcite
+    Stone --> Calcite
 
     Stone --> Coal
 
-    Stone --> Iron
     Coal --> Iron
+    Stone --> Iron
     
-    Iron --> Copper
+    Calcite --> Lapis
+    Iron --> Lapis
+    
     Moss --> Copper
+    Iron --> Copper
 
-    Stone -- Lava block --> Netherrack
+    Stone --> Netherrack
+    LavaBlock --> Netherrack
     
     Sand --> Quartz
     Magma --> Quartz
     
-    Gravel -- water block --> Sand
+    Gravel --> Sand
+    WaterBlock --> Sand
     
     Magma --> Diamond
     Coal --> Diamond
     
-    Netherrack -- lava block --> Magma
+    Netherrack --> Magma
+    LavaBlock --> Magma
     
     Quartz --> Amethyst
     Magma --> Amethyst
+    
+    Magma --> Emerald
+    Amethyst --> Emerald
+    Moss --> Emerald
+    
+    Amethyst --> Gold
+    Magma --> Gold
+    Iron --> Gold
+    
+    Lapis --> Redstone
+    Copper --> Redstone
 ```
 

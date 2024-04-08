@@ -3,6 +3,14 @@
     {
       "chance": 10,
       "requirements": [
+        "minecraft:moss_block",
+        "resourceshrooms:dirt_mushroom"
+      ]
+    },
+    {
+      "chance": 5,
+      "requirements": [
+        "minecraft:moss_carpet",
         "resourceshrooms:dirt_mushroom"
       ]
     }
@@ -12,6 +20,15 @@
       "chance": 10,
       "requirements": [
         "resourceshrooms:dirt_mushroom"
+      ]
+    }
+  ],
+  "sand": [
+    {
+      "chance": 10,
+      "requirements": [
+        "minecraft:water",
+        "resourceshrooms:gravel_mushroom"
       ]
     }
   ],

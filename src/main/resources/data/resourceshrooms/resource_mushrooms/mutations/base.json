@@ -84,5 +84,23 @@
         "minecraft:lava"
       ]
     }
+  ],
+  "quartz": [
+    {
+      "chance": 5,
+      "requirements": [
+        "resourceshrooms:magma_mushroom",
+        "resourceshrooms:sand_mushroom"
+      ]
+    }
+  ],
+  "amethyst": [
+    {
+      "chance": 2,
+      "requirements": [
+        "resourceshrooms:magma_mushroom",
+        "resourceshrooms:quartz_mushroom"
+      ]
+    }
   ]
 }

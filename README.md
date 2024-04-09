@@ -7,7 +7,7 @@ graph TD
     Iron{{Iron}}
     Magma{{Magma}}
     Netherrack{{Netherrack}}
-    Quartz
+    Quartz{{Quartz}}
     Sand{{Sand}}
     Moss{{Moss}}
     Copper{{Copper}}

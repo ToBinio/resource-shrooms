@@ -25,7 +25,7 @@
   ],
   "sand": [
     {
-      "chance": 10,
+      "chance": 5,
       "requirements": [
         "minecraft:water",
         "resourceshrooms:gravel_mushroom"
@@ -34,10 +34,19 @@
   ],
   "stone": [
     {
-      "chance": 20,
+      "chance": 10,
       "requirements": [
         "resourceshrooms:gravel_mushroom",
         "minecraft:gravel"
+      ]
+    }
+  ],
+  "calcite": [
+    {
+      "chance": 10,
+      "requirements": [
+        "resourceshrooms:gravel_mushroom",
+        "resourceshrooms:stone_mushroom"
       ]
     }
   ],

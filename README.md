@@ -13,7 +13,7 @@ graph TD
     Copper{{Copper}}
     Amethyst{{Amethyst}}
     Diamond
-    Calcite
+    Calcite{{Calcite}}
     Gold
     Emerald
     Lapis
@@ -44,8 +44,8 @@ graph TD
     Calcite --> Lapis
     Iron --> Lapis
     
-    Moss --> Copper
     Iron --> Copper
+    Moss --> Copper
 
     Stone --> Netherrack
     LavaBlock --> Netherrack
@@ -65,8 +65,8 @@ graph TD
     Quartz --> Amethyst
     Magma --> Amethyst
     
-    Magma --> Emerald
     Amethyst --> Emerald
+    Magma --> Emerald
     Moss --> Emerald
     
     Amethyst --> Gold

@@ -1,5 +1,6 @@
 package tobinio.resourceshrooms.mutations;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
@@ -36,22 +37,23 @@ public class MutationsResourceLoader implements SimpleSynchronousResourceReloadL
 
             try (InputStream stream = resource.getValue().getInputStream()) {
                 String fileContent = new String(stream.readAllBytes());
-                JsonObject data = JsonHelper.deserialize(fileContent);
+                JsonArray data = JsonHelper.deserializeArray(fileContent);
 
-                for (Map.Entry<String, JsonElement> rawMutations : data.asMap().entrySet()) {
-                    Optional<Mushroom> result = Mushrooms.getFromString(rawMutations.getKey());
+                String[] nameSplit = resource.getKey().toString().split("/");
+                String name = nameSplit[nameSplit.length - 1].split("\\.")[0];
 
-                    if (result.isPresent()) {
+                Optional<Mushroom> result = Mushrooms.getFromString(name);
 
-                        List<Mutation> mutations = parseMutations(result.get(), rawMutations.getValue());
+                if (result.isPresent()) {
 
-                        for (Mutation mutation : mutations) {
-                            Mutations.addMutation(mutation);
-                        }
+                    List<Mutation> mutations = parseMutations(result.get(), data);
 
-                    } else {
-                        ResourceShrooms.LOGGER.error("No mushroom found with name %s".formatted(rawMutations.getKey()));
+                    for (Mutation mutation : mutations) {
+                        Mutations.addMutation(mutation);
                     }
+
+                } else {
+                    ResourceShrooms.LOGGER.error("No mushroom found with name %s".formatted(name));
                 }
 
             } catch (Exception e) {

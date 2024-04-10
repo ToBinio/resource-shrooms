@@ -1,0 +1,9 @@
+[
+  {
+    "chance": 10,
+    "requirements": [
+      "resourceshrooms:gravel_mushroom",
+      "minecraft:gravel"
+    ]
+  }
+]

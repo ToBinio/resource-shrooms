@@ -12,9 +12,9 @@ graph TD
     Moss{{Moss}}
     Copper{{Copper}}
     Amethyst{{Amethyst}}
-    Diamond
     Calcite{{Calcite}}
-    Gold
+    Diamond
+    Gold{{Gold}}
     Emerald
     Lapis
     Redstone

@@ -32,5 +32,9 @@
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
+  },
+  "suggests": {
+    "emi": ">=0.96.11",
+    "useful_brush": ">=0.1.2"
   }
 }

@@ -1,0 +1,54 @@
+{
+  "resourceshrooms:amethyst_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:amethyst"
+  },
+  "resourceshrooms:calcite_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:calcite"
+  },
+  "resourceshrooms:coal_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:coal"
+  },
+  "resourceshrooms:copper_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:copper"
+  },
+  "resourceshrooms:gold_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:gold"
+  },
+  "resourceshrooms:gravel_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:gravel"
+  },
+  "resourceshrooms:iron_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:iron"
+  },
+  "resourceshrooms:magma_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:magma"
+  },
+  "resourceshrooms:moss_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:moss"
+  },
+  "resourceshrooms:netherrack_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:netherrack"
+  },
+  "resourceshrooms:quartz_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:quartz"
+  },
+  "resourceshrooms:sand_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:sand"
+  },
+  "resourceshrooms:stone_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:stone"
+  }
+}

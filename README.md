@@ -17,7 +17,7 @@ graph TD
     Gold{{Gold}}
     Emerald
     Lapis{{Lapis}}
-    Redstone
+    Redstone{{Redstone}}
 
     MossBlock[[MossBlock]]
     GravelBlock[[GravelBlock]]

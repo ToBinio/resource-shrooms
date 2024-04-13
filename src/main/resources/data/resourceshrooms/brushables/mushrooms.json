@@ -27,6 +27,10 @@
     "block": "air",
     "loot_table": "resourceshrooms:iron"
   },
+  "resourceshrooms:lapis_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:lapis"
+  },
   "resourceshrooms:magma_mushroom": {
     "block": "air",
     "loot_table": "resourceshrooms:magma"
@@ -42,6 +46,10 @@
   "resourceshrooms:quartz_mushroom": {
     "block": "air",
     "loot_table": "resourceshrooms:quartz"
+  },
+  "resourceshrooms:redstone_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:redstone"
   },
   "resourceshrooms:sand_mushroom": {
     "block": "air",

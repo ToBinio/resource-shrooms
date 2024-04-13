@@ -1,0 +1,9 @@
+[
+  {
+    "chance": 2,
+    "requirements": [
+      "resourceshrooms:lapis_mushroom",
+      "resourceshrooms:moss_mushroom"
+    ]
+  }
+]

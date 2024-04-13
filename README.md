@@ -16,7 +16,7 @@ graph TD
     Diamond
     Gold{{Gold}}
     Emerald
-    Lapis
+    Lapis{{Lapis}}
     Redstone
 
     MossBlock[[MossBlock]]

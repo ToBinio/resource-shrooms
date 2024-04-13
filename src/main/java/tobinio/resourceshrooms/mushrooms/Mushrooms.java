@@ -32,6 +32,7 @@ public class Mushrooms {
     public static final Mushroom QUARTZ_MUSHROOM = register("Quartz");
     public static final Mushroom CALCITE_MUSHROOM = register("Calcite");
     public static final Mushroom GOLD_MUSHROOM = register("Gold");
+    public static final Mushroom LAPIS_MUSHROOM = register("Lapis");
 
 
     public static Mushroom register(String displayName) {

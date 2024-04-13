@@ -1,0 +1,9 @@
+[
+  {
+    "chance": 2,
+    "requirements": [
+      "resourceshrooms:calcite_mushroom",
+      "resourceshrooms:iron_mushroom"
+    ]
+  }
+]

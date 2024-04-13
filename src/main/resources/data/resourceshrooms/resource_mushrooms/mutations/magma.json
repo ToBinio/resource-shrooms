@@ -2,8 +2,8 @@
   {
     "chance": 10,
     "requirements": [
-      "resourceshrooms:netherrack_mushroom",
-      "minecraft:lava"
+      "minecraft:lava",
+      "resourceshrooms:netherrack_mushroom"
     ]
   }
 ]

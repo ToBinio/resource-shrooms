@@ -48,6 +48,8 @@ public class ModEmiPlugin implements EmiPlugin {
                     allRequirements.add(EmiStack.of(mushroom.get().blockItem()));
                 } else if (block == Blocks.LAVA) {
                     allRequirements.add(EmiStack.of(Fluids.LAVA));
+                } else if (block == Blocks.WATER) {
+                    allRequirements.add(EmiStack.of(Fluids.WATER));
                 } else {
                     allRequirements.add(EmiStack.of(block.asItem()));
                 }

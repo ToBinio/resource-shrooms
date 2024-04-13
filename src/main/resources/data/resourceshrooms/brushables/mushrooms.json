@@ -15,6 +15,10 @@
     "block": "air",
     "loot_table": "resourceshrooms:copper"
   },
+  "resourceshrooms:diamond_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:diamond"
+  },
   "resourceshrooms:gold_mushroom": {
     "block": "air",
     "loot_table": "resourceshrooms:gold"

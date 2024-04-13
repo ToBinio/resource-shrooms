@@ -13,7 +13,7 @@ graph TD
     Copper{{Copper}}
     Amethyst{{Amethyst}}
     Calcite{{Calcite}}
-    Diamond
+    Diamond{{Diamond}}
     Gold{{Gold}}
     Emerald
     Lapis{{Lapis}}

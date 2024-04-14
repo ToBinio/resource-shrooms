@@ -1,0 +1,42 @@
+{
+  "name": "Mushroom Growth",
+  "icon": "resourceshrooms:diamond_mushroom_spores",
+  "category": "resourceshrooms:category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Mushroom Growth",
+      "text": "Resourceshrooms have 3 states of growth once they are fully grown they have a random chance to spread to a neighboring block."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Neighbors",
+      "text": "When a mushroom tries to spread all blocks marked with a glass are regarded as neighbors.",
+      "multiblock": {
+        "pattern": [
+          [
+            "GGG",
+            "GGG",
+            "GGG"
+          ],
+          [
+            "GGG",
+            "G0G",
+            "GGG"
+          ],
+          [
+            "GGG",
+            "GGG",
+            "GGG"
+          ]
+        ],
+        "mapping": {
+          "0": "minecraft:red_terracotta",
+          "G": "minecraft:glass"
+        },
+        "symmetrical": true
+      },
+      "enable_visualize": false
+    }
+  ]
+}

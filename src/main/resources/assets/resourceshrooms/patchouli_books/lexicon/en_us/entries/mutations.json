@@ -1,0 +1,42 @@
+{
+  "name": "Mushroom Mutation",
+  "icon": "minecraft:bone_meal",
+  "category": "resourceshrooms:category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Mushroom Mutation",
+      "text": "Resourceshrooms have a random chance to mutate each time they spread.$(br)Some mutations have extra requirements like having another mushroom as a neighbor of the goal location.$(br)The easiest way to find all mutations is by using the EMI."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Neighbors",
+      "text": "When a mushroom mutations to the red Terracotta all blocks marked with a glass are regarded as neighbors.",
+      "multiblock": {
+        "pattern": [
+          [
+            "GGG",
+            "GGG",
+            "GGG"
+          ],
+          [
+            "GGG",
+            "G0G",
+            "GGG"
+          ],
+          [
+            "GGG",
+            "GGG",
+            "GGG"
+          ]
+        ],
+        "mapping": {
+          "0": "minecraft:red_terracotta",
+          "G": "minecraft:glass"
+        },
+        "symmetrical": true
+      },
+      "enable_visualize": false
+    }
+  ]
+}

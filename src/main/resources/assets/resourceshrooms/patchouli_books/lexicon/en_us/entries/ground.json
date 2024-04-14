@@ -1,0 +1,29 @@
+{
+  "name": "Mushroom Mutation",
+  "icon": "minecraft:grass_block",
+  "category": "resourceshrooms:category",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "Grow Blocks",
+      "item": "tag:resourceshrooms:mushroom_grow_block",
+      "text": "Mushrooms can only grow on blocks included in the $(thing)#resourceshrooms:mushroom_grow_block$() tag."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "title": "Mutation Blocks",
+      "item": "tag:resourceshrooms:mushroom_mutation_block",
+      "text": "When a mushroom tries to spread onto a block in the $(thing)#resourceshrooms:mushroom_mutation_block$() tag the chance of a mutation is doubled."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "title": "Stable Blocks",
+      "item": "tag:resourceshrooms:mushroom_stable_block",
+      "text": "When a mushroom tries to spread onto a block in the $(thing)#resourceshrooms:mushroom_stable_block$() tag it is not possible to for it to mutate. This is useful when building farms."
+    },
+    {
+      "type": "patchouli:empty",
+      "draw_filler": false
+    }
+  ]
+}

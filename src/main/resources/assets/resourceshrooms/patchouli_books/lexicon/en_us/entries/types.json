@@ -1,0 +1,17 @@
+{
+  "name": "Mushroom Types",
+  "icon": "resourceshrooms:gold_mushroom",
+  "category": "resourceshrooms:category",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "Mushrooms Types",
+      "item": "tag:resourceshrooms:mushroom",
+      "text": "There are a lot of different types of Resourceshrooms the easiest way to see them all is to have a look in the EMI view.$(br)Simply type $(thing)@resourceshrooms$() and you will see all the types!"
+    },
+    {
+      "type": "patchouli:empty",
+      "draw_filler": false
+    }
+  ]
+}

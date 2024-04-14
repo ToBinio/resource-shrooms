@@ -16,6 +16,7 @@ public class ModTags {
 
         public static final TagKey<Item> MUSHROOM_STABLE_BLOCK = TagKey.of(RegistryKeys.ITEM, new Identifier(ResourceShrooms.MOD_ID, "mushroom_stable_block"));
 
+        public static final TagKey<Item> MUSHROOM = TagKey.of(RegistryKeys.ITEM, new Identifier(ResourceShrooms.MOD_ID, "mushroom"));
     }
 
     public static class Blocks {

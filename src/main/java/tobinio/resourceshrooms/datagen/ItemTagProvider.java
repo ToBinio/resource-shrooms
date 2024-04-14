@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
+import tobinio.resourceshrooms.mushrooms.Mushroom;
+import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import tobinio.resourceshrooms.tags.ModTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -29,5 +31,10 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ModTags.Items.MUSHROOM_STABLE_BLOCK).add(Blocks.MYCELIUM.asItem())
                 .add(Blocks.PODZOL.asItem());
+
+
+        for (Mushroom mushroom : Mushrooms.ALL) {
+            getOrCreateTagBuilder(ModTags.Items.MUSHROOM).add(mushroom.blockItem());
+        }
     }
 }

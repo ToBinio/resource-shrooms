@@ -19,6 +19,10 @@
     "block": "air",
     "loot_table": "resourceshrooms:diamond"
   },
+  "resourceshrooms:emerald_mushroom": {
+    "block": "air",
+    "loot_table": "resourceshrooms:emerald"
+  },
   "resourceshrooms:gold_mushroom": {
     "block": "air",
     "loot_table": "resourceshrooms:gold"

@@ -1,0 +1,10 @@
+[
+  {
+    "chance": 1,
+    "requirements": [
+      "resourceshrooms:magma_mushroom",
+      "resourceshrooms:amethyst_mushroom",
+      "resourceshrooms:moss_mushroom"
+    ]
+  }
+]

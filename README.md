@@ -15,7 +15,7 @@ graph TD
     Calcite{{Calcite}}
     Diamond{{Diamond}}
     Gold{{Gold}}
-    Emerald
+    Emerald{{Emerald}}
     Lapis{{Lapis}}
     Redstone{{Redstone}}
 

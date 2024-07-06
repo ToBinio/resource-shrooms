@@ -2,8 +2,6 @@ package tobinio.resourceshrooms.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
@@ -12,13 +10,17 @@ import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
+import net.minecraft.registry.RegistryWrapper;
 import tobinio.resourceshrooms.blocks.MushroomBlock;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
 
+import java.util.concurrent.CompletableFuture;
+
 public class BlockLootTableProvider extends FabricBlockLootTableProvider {
-    protected BlockLootTableProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    BlockLootTableProvider(FabricDataOutput output,
+            CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(output, registryLookup);
     }
 
     @Override

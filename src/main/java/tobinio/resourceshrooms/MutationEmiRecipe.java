@@ -2,21 +2,15 @@ package tobinio.resourceshrooms;
 
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.TextWidget;
 import dev.emi.emi.api.widget.WidgetHolder;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
-import tobinio.resourceshrooms.mushrooms.Mushrooms;
 
 import java.util.List;
 

@@ -1,20 +1,16 @@
 package tobinio.resourceshrooms.items;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import tobinio.resourceshrooms.ResourceShrooms;
-import tobinio.resourceshrooms.blocks.ModBlocks;
+
+import static tobinio.resourceshrooms.ResourceShrooms.id;
 
 public class ModItems {
 
     public static <T extends Item> T register(T item, String ID) {
-        Identifier itemID = new Identifier(ResourceShrooms.MOD_ID, ID);
+        Identifier itemID = id(ID);
 
         return Registry.register(Registries.ITEM, itemID, item);
     }

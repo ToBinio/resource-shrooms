@@ -22,9 +22,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static tobinio.resourceshrooms.ResourceShrooms.id;
+
 public class ModEmiPlugin implements EmiPlugin {
 
-    public static final EmiRecipeCategory MUTATION_CATEGORY = new EmiRecipeCategory(new Identifier(ResourceShrooms.MOD_ID, "mutations"), EmiStack.of(Mushrooms.COAL_MUSHROOM.blockItem()), EmiStack.of(Mushrooms.COAL_MUSHROOM.blockItem()));
+    public static final EmiRecipeCategory MUTATION_CATEGORY = new EmiRecipeCategory(id("mutations"), EmiStack.of(Mushrooms.COAL_MUSHROOM.blockItem()), EmiStack.of(Mushrooms.COAL_MUSHROOM.blockItem()));
 
     @Override
     public void register(EmiRegistry registry) {
@@ -56,7 +58,7 @@ public class ModEmiPlugin implements EmiPlugin {
                 }
             }
 
-            registry.addRecipe(new MutationEmiRecipe(allRequirements, mutation.chance(), mutation.result(), new Identifier(ResourceShrooms.MOD_ID, "mutation_%d".formatted(count))));
+            registry.addRecipe(new MutationEmiRecipe(allRequirements, mutation.chance(), mutation.result(), id("mutation_%d".formatted(count))));
         }
 
     }

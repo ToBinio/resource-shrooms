@@ -1,10 +1,9 @@
 package tobinio.resourceshrooms;
 
-import io.netty.util.Attribute;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.minecraft.block.Block;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tobinio.resourceshrooms.blocks.ModBlocks;
@@ -14,10 +13,6 @@ import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import tobinio.resourceshrooms.mutations.Mutations;
 import tobinio.resourceshrooms.mutations.MutationsResourceLoader;
 import tobinio.resourceshrooms.tags.ModTags;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ResourceShrooms implements ModInitializer {
 
@@ -36,4 +31,9 @@ public class ResourceShrooms implements ModInitializer {
         Mushrooms.initialize();
         Mutations.initialize();
     }
+
+    public static Identifier id(String path) {
+        return Identifier.of(MOD_ID, path);
+    }
+
 }

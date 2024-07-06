@@ -1,26 +1,21 @@
 package tobinio.resourceshrooms.blocks;
 
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import tobinio.resourceshrooms.ResourceShrooms;
-import tobinio.resourceshrooms.items.ModItems;
+
+import static tobinio.resourceshrooms.ResourceShrooms.id;
 
 public class ModBlocks {
 
     public static <T extends Block> T register(T block, String name, boolean shouldRegisterItem) {
-        Identifier id = new Identifier(ResourceShrooms.MOD_ID, name);
+        Identifier id = id(name);
 
         if (shouldRegisterItem) {
             BlockItem blockItem = new BlockItem(block, new Item.Settings());

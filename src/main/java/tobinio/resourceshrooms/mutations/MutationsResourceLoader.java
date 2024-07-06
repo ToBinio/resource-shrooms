@@ -20,10 +20,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static tobinio.resourceshrooms.ResourceShrooms.id;
+
 public class MutationsResourceLoader implements SimpleSynchronousResourceReloadListener {
     @Override
     public Identifier getFabricId() {
-        return new Identifier(ResourceShrooms.MOD_ID, "mutations_resources");
+        return id("mutations_resources");
     }
 
     @Override

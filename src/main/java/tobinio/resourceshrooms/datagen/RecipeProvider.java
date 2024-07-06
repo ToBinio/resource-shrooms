@@ -6,7 +6,10 @@ import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Created: 17.04.24
@@ -14,8 +17,8 @@ import tobinio.resourceshrooms.mushrooms.Mushrooms;
  * @author Tobias Frischmann
  */
 public class RecipeProvider extends FabricRecipeProvider {
-    public RecipeProvider(FabricDataOutput output) {
-        super(output);
+    public RecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(output, registryLookup);
     }
 
     @Override

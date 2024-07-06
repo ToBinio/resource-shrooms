@@ -2,20 +2,23 @@ package tobinio.resourceshrooms.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.RegistryWrapper;
 import tobinio.resourceshrooms.ResourceShrooms;
-import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.items.ModItemGroups;
-import tobinio.resourceshrooms.items.ModItems;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
 
+import java.util.concurrent.CompletableFuture;
+
 public class EnglishTranslationProvider extends FabricLanguageProvider {
-    protected EnglishTranslationProvider(FabricDataOutput dataOutput) {
-        super(dataOutput, "en_us");
+    protected EnglishTranslationProvider(FabricDataOutput dataOutput,
+            CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(dataOutput, "en_us", registriesFuture);
     }
 
     @Override
-    public void generateTranslations(TranslationBuilder translationBuilder) {
+    public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup,
+            TranslationBuilder translationBuilder) {
         for (Mushroom mushroom : Mushrooms.ALL) {
             translateMushroom(translationBuilder, mushroom);
         }

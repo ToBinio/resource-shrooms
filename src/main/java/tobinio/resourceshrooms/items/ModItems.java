@@ -9,10 +9,11 @@ import static tobinio.resourceshrooms.ResourceShrooms.id;
 
 public class ModItems {
 
-    public static <T extends Item> T register(T item, String ID) {
-        Identifier itemID = id(ID);
+    public static final Item MUTAGEN = register(new Item(new Item.Settings()), id("mutagen"));
+    public static final Item STABILIZER = register(new Item(new Item.Settings()), id("stabilizer"));
 
-        return Registry.register(Registries.ITEM, itemID, item);
+    public static <T extends Item> T register(T item, Identifier id) {
+        return Registry.register(Registries.ITEM, id, item);
     }
 
     public static void initialize() {

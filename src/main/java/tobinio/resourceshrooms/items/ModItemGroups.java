@@ -7,6 +7,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import tobinio.resourceshrooms.ResourceShrooms;
+import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
 
@@ -25,6 +26,14 @@ public class ModItemGroups {
                 for (Mushroom mushroom : Mushrooms.ALL) {
                     entries.add(mushroom.head());
                 }
+
+                entries.add(ModBlocks.GROUND_TIER1);
+                entries.add(ModBlocks.GROUND_TIER2);
+                entries.add(ModBlocks.GROUND_TIER3);
+                entries.add(ModBlocks.GROUND_TIER4);
+
+                entries.add(ModItems.MUTAGEN);
+                entries.add(ModItems.STABILIZER);
             })
             .build());
 

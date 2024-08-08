@@ -1,43 +1,49 @@
 ```mermaid
 graph TD
-    Dirt([Dirt])
-    Gravel{{Gravel}}
-    Stone{{Stone}}
-    Coal{{Coal}}
-    Iron{{Iron}}
-    Magma{{Magma}}
-    Netherrack{{Netherrack}}
-    Quartz{{Quartz}}
-    Sand{{Sand}}
-    Moss{{Moss}}
-    Copper{{Copper}}
-    Amethyst{{Amethyst}}
-    Calcite{{Calcite}}
-    Diamond{{Diamond}}
-    Gold{{Gold}}
-    Emerald{{Emerald}}
-    Lapis{{Lapis}}
-    Redstone{{Redstone}}
+    subgraph Tier 0
+        Dirt([Dirt])
+        Gravel{{Gravel}}
+        Stone{{Stone}}
+    end
 
-    MossBlock[[MossBlock]]
-    GravelBlock[[GravelBlock]]
-    LavaBlock[[LavaBlock]]
-    WaterBlock[[WaterBlock]]
-    
+    subgraph Tier 1
+        Coal{{Coal}}
+        Sand{{Sand}}
+        Moss{{Moss}}
+        Calcite{{Calcite}}
+    end
+
+    subgraph Tier 2
+        Iron{{Iron}}
+        Lapis{{Lapis}}
+        Copper{{Copper}}
+    end
+
+    subgraph Tier 3
+        Netherrack{{Netherrack}}
+        Quartz{{Quartz}}
+        Magma{{Magma}}
+        Amethyst{{Amethyst}}
+        Redstone{{Redstone}}
+    end
+
+    subgraph Tier 4
+        Diamond{{Diamond}}
+        Gold{{Gold}}
+        Emerald{{Emerald}}
+    end
+
     Dirt --> Gravel
-    GravelBlock --> Gravel
     
     Dirt --> Moss
-    MossBlock --> Moss
     
     Gravel --> Stone
-    GravelBlock --> Stone
     
     Gravel --> Calcite
     Stone --> Calcite
-
+    
     Stone --> Coal
-
+    
     Coal --> Iron
     Stone --> Iron
     
@@ -46,32 +52,29 @@ graph TD
     
     Iron --> Copper
     Moss --> Copper
-
+    
     Stone --> Netherrack
-    LavaBlock --> Netherrack
     
     Sand --> Quartz
     Magma --> Quartz
     
     Gravel --> Sand
-    WaterBlock --> Sand
     
     Magma --> Diamond
     Coal --> Diamond
     
     Netherrack --> Magma
-    LavaBlock --> Magma
-    
-    Quartz --> Amethyst
-    Magma --> Amethyst
-    
-    Amethyst --> Emerald
-    Magma --> Emerald
-    Moss --> Emerald
     
     Amethyst --> Gold
     Magma --> Gold
     Iron --> Gold
+
+    Moss --> Emerald
+    Amethyst --> Emerald
+    Magma --> Emerald
+    
+    Quartz --> Amethyst
+    Magma --> Amethyst
     
     Lapis --> Redstone
     Copper --> Redstone

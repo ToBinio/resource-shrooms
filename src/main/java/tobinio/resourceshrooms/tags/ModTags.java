@@ -12,21 +12,17 @@ import static tobinio.resourceshrooms.ResourceShrooms.id;
 public class ModTags {
 
     public static class Items {
-        public static final TagKey<Item> MUSHROOM_GROW_BLOCK = TagKey.of(RegistryKeys.ITEM, id("mushroom_grow_block"));
-
-        public static final TagKey<Item> MUSHROOM_MUTATION_BLOCK = TagKey.of(RegistryKeys.ITEM, id("mushroom_mutation_block"));
-
-        public static final TagKey<Item> MUSHROOM_STABLE_BLOCK = TagKey.of(RegistryKeys.ITEM, id("mushroom_stable_block"));
-
         public static final TagKey<Item> MUSHROOM = TagKey.of(RegistryKeys.ITEM, id("mushroom"));
+        public static final TagKey<Item> MUSHROOM_HEAD = TagKey.of(RegistryKeys.ITEM, id("mushroom_head"));
+        public static final TagKey<Item> MUSHROOM_SPORE = TagKey.of(RegistryKeys.ITEM, id("mushroom_spore"));
     }
 
     public static class Blocks {
-        public static final TagKey<Block> MUSHROOM_GROW_BLOCK = TagKey.of(RegistryKeys.BLOCK, id("mushroom_grow_block"));
-
-        public static final TagKey<Block> MUSHROOM_MUTATION_BLOCK = TagKey.of(RegistryKeys.BLOCK, id("mushroom_mutation_block"));
-
-        public static final TagKey<Block> MUSHROOM_STABLE_BLOCK = TagKey.of(RegistryKeys.BLOCK, id("mushroom_stable_block"));
+        public static final TagKey<Block> GROUND_TIER0 = TagKey.of(RegistryKeys.BLOCK, id("ground_tier0"));
+        public static final TagKey<Block> GROUND_TIER1 = TagKey.of(RegistryKeys.BLOCK, id("ground_tier1"));
+        public static final TagKey<Block> GROUND_TIER2 = TagKey.of(RegistryKeys.BLOCK, id("ground_tier2"));
+        public static final TagKey<Block> GROUND_TIER3 = TagKey.of(RegistryKeys.BLOCK, id("ground_tier3"));
+        public static final TagKey<Block> GROUND_TIER4 = TagKey.of(RegistryKeys.BLOCK, id("ground_tier4"));
     }
 
     public static void initialize() {

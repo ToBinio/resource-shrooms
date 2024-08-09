@@ -6,6 +6,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.Hand;
@@ -56,11 +58,15 @@ public class GroundBlock extends Block {
             PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (stack.getItem() == ModItems.STABILIZER && state.get(GROUND_STATE) != GroundState.STABLE) {
             world.setBlockState(pos, state.with(GROUND_STATE, GroundState.STABLE));
+            stack.decrementUnlessCreative(1, player);
+            world.playSoundAtBlockCenter(pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             return ItemActionResult.SUCCESS;
         }
 
         if (stack.getItem() == ModItems.MUTAGEN && state.get(GROUND_STATE) != GroundState.MUTATING) {
             world.setBlockState(pos, state.with(GROUND_STATE, GroundState.MUTATING));
+            stack.decrementUnlessCreative(1, player);
+            world.playSoundAtBlockCenter(pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             return ItemActionResult.SUCCESS;
         }
 

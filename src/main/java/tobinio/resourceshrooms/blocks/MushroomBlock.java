@@ -12,9 +12,10 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import tobinio.resourceshrooms.mushrooms.Mushroom;
+import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import tobinio.resourceshrooms.mutations.Mutation;
 import tobinio.resourceshrooms.mutations.Mutations;
-import tobinio.resourceshrooms.tags.ModTags;
 
 import java.util.HashSet;
 import java.util.List;
@@ -30,6 +31,16 @@ public class MushroomBlock extends Block {
         super(settings);
     }
 
+    public Mushroom getMushroom() {
+        for (Mushroom mushroom : Mushrooms.ALL) {
+            if (mushroom.block() == this) {
+                return mushroom;
+            }
+        }
+
+        return null;
+    }
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(AGE);
@@ -43,8 +54,10 @@ public class MushroomBlock extends Block {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos down = pos.down();
-        return world.getBlockState(down).isIn(ModTags.Blocks.MUSHROOM_GROW_BLOCK);
+        Mushroom mushroom = getMushroom();
+        BlockState blockBeneath = world.getBlockState(pos.down());
+
+        return GroundBlock.getBLockTier(blockBeneath) >= mushroom.tier();
     }
 
     @Override
@@ -70,19 +83,19 @@ public class MushroomBlock extends Block {
     private BlockState getOffSpring(ServerWorld world, BlockPos goalPos, Random random) {
 
         //stable ground do not mutate
-        if (world.getBlockState(goalPos.down()).isIn(ModTags.Blocks.MUSHROOM_STABLE_BLOCK)) {
+        if (GroundBlock.isStableGround(world.getBlockState(goalPos.down()))) {
             return this.getDefaultState();
         }
 
         Set<Block> neighbors = getNeighbors(world, goalPos);
         List<Mutation> mutations = Mutations.getPossibleMutations(this, neighbors);
 
-        var mutationsGround = world.getBlockState(goalPos.down()).isIn(ModTags.Blocks.MUSHROOM_MUTATION_BLOCK);
+        var isMutationGround = GroundBlock.isMutationGround(world.getBlockState(goalPos.down()));
 
         var weight = 0;
 
         for (Mutation mutation : mutations) {
-            weight += mutationsGround ? mutation.chance() * 2 : mutation.chance();
+            weight += isMutationGround ? mutation.chance() * 2 : mutation.chance();
         }
 
         weight = Math.max(weight, 100);
@@ -92,7 +105,7 @@ public class MushroomBlock extends Block {
         var currentWeight = 0;
 
         for (Mutation mutation : mutations) {
-            currentWeight += mutationsGround ? mutation.chance() * 2 : mutation.chance();
+            currentWeight += isMutationGround ? mutation.chance() * 2 : mutation.chance();
 
             if (rng <= currentWeight) {
                 return mutation.result().block().getDefaultState();

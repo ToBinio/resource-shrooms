@@ -17,24 +17,10 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(ModTags.Items.MUSHROOM_MUTATION_BLOCK).add(Blocks.MOSS_BLOCK.asItem())
-                .add(Blocks.MUD.asItem());
-
-        getOrCreateTagBuilder(ModTags.Items.MUSHROOM_GROW_BLOCK).add(Blocks.GRASS_BLOCK.asItem())
-                .add(Blocks.DIRT.asItem())
-                .add(Blocks.PODZOL.asItem())
-                .add(Blocks.COARSE_DIRT.asItem())
-                .add(Blocks.ROOTED_DIRT.asItem())
-                .add(Blocks.MUD.asItem())
-                .add(Blocks.MOSS_BLOCK.asItem())
-                .add(Blocks.MYCELIUM.asItem());
-
-        getOrCreateTagBuilder(ModTags.Items.MUSHROOM_STABLE_BLOCK).add(Blocks.MYCELIUM.asItem())
-                .add(Blocks.PODZOL.asItem());
-
-
         for (Mushroom mushroom : Mushrooms.ALL) {
             getOrCreateTagBuilder(ModTags.Items.MUSHROOM).add(mushroom.blockItem());
+            getOrCreateTagBuilder(ModTags.Items.MUSHROOM_HEAD).add(mushroom.head());
+            getOrCreateTagBuilder(ModTags.Items.MUSHROOM_SPORE).add(mushroom.spores());
         }
     }
 }

@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
+import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import tobinio.resourceshrooms.tags.ModTags;
@@ -18,19 +19,10 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(ModTags.Blocks.MUSHROOM_MUTATION_BLOCK).add(Blocks.MOSS_BLOCK)
-                .add(Blocks.MUD);
-
-        getOrCreateTagBuilder(ModTags.Blocks.MUSHROOM_GROW_BLOCK).add(Blocks.GRASS_BLOCK)
-                .add(Blocks.DIRT)
-                .add(Blocks.PODZOL)
-                .add(Blocks.COARSE_DIRT)
-                .add(Blocks.ROOTED_DIRT)
-                .add(Blocks.MUD)
-                .add(Blocks.MOSS_BLOCK)
-                .add(Blocks.MYCELIUM);
-
-        getOrCreateTagBuilder(ModTags.Blocks.MUSHROOM_STABLE_BLOCK).add(Blocks.MYCELIUM)
-                .add(Blocks.PODZOL);
+        getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER0).add(Blocks.DIRT);
+        getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER1).add(ModBlocks.GROUND_TIER1);
+        getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER2).add(ModBlocks.GROUND_TIER2);
+        getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER3).add(ModBlocks.GROUND_TIER3);
+        getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER4).add(ModBlocks.GROUND_TIER4);
     }
 }

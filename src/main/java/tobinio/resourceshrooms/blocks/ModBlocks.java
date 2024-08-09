@@ -14,6 +14,15 @@ import static tobinio.resourceshrooms.ResourceShrooms.id;
 
 public class ModBlocks {
 
+    public static final Block GROUND_TIER1 = register(new GroundBlock(AbstractBlock.Settings.create()
+            .sounds(BlockSoundGroup.GRASS)), "ground_tier1", true);
+    public static final Block GROUND_TIER2 = register(new GroundBlock(AbstractBlock.Settings.create()
+            .sounds(BlockSoundGroup.GRASS)), "ground_tier2", true);
+    public static final Block GROUND_TIER3 = register(new GroundBlock(AbstractBlock.Settings.create()
+            .sounds(BlockSoundGroup.GRASS)), "ground_tier3", true);
+    public static final Block GROUND_TIER4 = register(new GroundBlock(AbstractBlock.Settings.create()
+            .sounds(BlockSoundGroup.GRASS)), "ground_tier4", true);
+
     public static <T extends Block> T register(T block, String name, boolean shouldRegisterItem) {
         Identifier id = id(name);
 

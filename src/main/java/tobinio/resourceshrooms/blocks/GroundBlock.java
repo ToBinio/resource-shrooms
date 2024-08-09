@@ -23,7 +23,7 @@ import tobinio.resourceshrooms.tags.ModTags;
  * @author Tobias Frischmann
  */
 public class GroundBlock extends Block {
-    public static final EnumProperty<GroundState> GROUND_STATE = EnumProperty.of("ground_tate", GroundState.class);
+    public static final EnumProperty<GroundState> GROUND_STATE = EnumProperty.of("ground_state", GroundState.class);
 
     public enum GroundState implements StringIdentifiable {
         NORMAL("normal"), STABLE("stable"), MUTATING("mutating");

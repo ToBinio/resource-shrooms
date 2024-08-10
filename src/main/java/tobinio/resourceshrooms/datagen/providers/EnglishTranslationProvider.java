@@ -1,4 +1,4 @@
-package tobinio.resourceshrooms.datagen;
+package tobinio.resourceshrooms.datagen.providers;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -13,7 +13,7 @@ import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import java.util.concurrent.CompletableFuture;
 
 public class EnglishTranslationProvider extends FabricLanguageProvider {
-    protected EnglishTranslationProvider(FabricDataOutput dataOutput,
+    public EnglishTranslationProvider(FabricDataOutput dataOutput,
             CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(dataOutput, "en_us", registriesFuture);
     }

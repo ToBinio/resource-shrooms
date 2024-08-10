@@ -1,10 +1,9 @@
-package tobinio.resourceshrooms.datagen;
+package tobinio.resourceshrooms.datagen.providers;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import tobinio.resourceshrooms.blocks.GroundBlock;
 import tobinio.resourceshrooms.blocks.ModBlocks;

@@ -2,6 +2,7 @@ package tobinio.resourceshrooms.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import tobinio.resourceshrooms.datagen.providers.*;
 
 public class ModDatagen implements DataGeneratorEntrypoint {
     @Override

@@ -1,4 +1,4 @@
-package tobinio.resourceshrooms.datagen;
+package tobinio.resourceshrooms.datagen.providers;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
@@ -11,6 +11,7 @@ import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.registry.RegistryWrapper;
+import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.blocks.MushroomBlock;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
@@ -18,7 +19,7 @@ import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import java.util.concurrent.CompletableFuture;
 
 public class BlockLootTableProvider extends FabricBlockLootTableProvider {
-    BlockLootTableProvider(FabricDataOutput output,
+    public BlockLootTableProvider(FabricDataOutput output,
             CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(output, registryLookup);
     }
@@ -28,6 +29,11 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
         for (Mushroom mushroom : Mushrooms.ALL) {
             addDrop(mushroom.block(), mushroomLootTable(mushroom));
         }
+
+        addDrop(ModBlocks.GROUND_TIER1);
+        addDrop(ModBlocks.GROUND_TIER2);
+        addDrop(ModBlocks.GROUND_TIER3);
+        addDrop(ModBlocks.GROUND_TIER4);
     }
 
     private LootTable.Builder mushroomLootTable(Mushroom mushroom) {

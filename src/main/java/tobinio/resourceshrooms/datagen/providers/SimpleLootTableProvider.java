@@ -1,4 +1,4 @@
-package tobinio.resourceshrooms.datagen;
+package tobinio.resourceshrooms.datagen.providers;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
@@ -13,8 +13,6 @@ import net.minecraft.predicate.StatePredicate;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.Identifier;
-import tobinio.resourceshrooms.ResourceShrooms;
 import tobinio.resourceshrooms.blocks.MushroomBlock;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
@@ -26,7 +24,7 @@ import static tobinio.resourceshrooms.ResourceShrooms.id;
 
 public class SimpleLootTableProvider extends SimpleFabricLootTableProvider {
 
-    protected SimpleLootTableProvider(FabricDataOutput dataOutput,
+    public SimpleLootTableProvider(FabricDataOutput dataOutput,
             CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(dataOutput, registryLookup, LootContextTypes.GENERIC);
     }

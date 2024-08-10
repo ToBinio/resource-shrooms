@@ -1,15 +1,26 @@
-package tobinio.resourceshrooms.datagen;
+package tobinio.resourceshrooms.datagen.providers;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
+import tobinio.resourceshrooms.blocks.ModBlocks;
+import tobinio.resourceshrooms.items.ModItems;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
+import tobinio.resourceshrooms.tags.ModTags;
 
 import java.util.concurrent.CompletableFuture;
+
+import static tobinio.resourceshrooms.ResourceShrooms.id;
 
 /**
  * Created: 17.04.24
@@ -23,6 +34,14 @@ public class RecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
+        mutagenRecipe(exporter);
+        stabilizerRecipe(exporter);
+
+        groundTier1Recipe(exporter);
+        groundRecipe(exporter, ModBlocks.GROUND_TIER1.asItem(), ModBlocks.GROUND_TIER2.asItem());
+        groundRecipe(exporter, ModBlocks.GROUND_TIER2.asItem(), ModBlocks.GROUND_TIER3.asItem());
+        groundRecipe(exporter, ModBlocks.GROUND_TIER3.asItem(), ModBlocks.GROUND_TIER4.asItem());
+
         amethystRecipe(exporter);
         calciteRecipe(exporter);
         coalRecipe(exporter);
@@ -34,6 +53,50 @@ public class RecipeProvider extends FabricRecipeProvider {
         ironRecipe(exporter);
         lapisRecipe(exporter);
         magmaRecipe(exporter);
+    }
+
+    private static void groundTier1Recipe(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.GROUND_TIER1.asItem(), 2)
+                .pattern("sgs")
+                .pattern("gsg")
+                .pattern("sgs")
+                .input('s', ModTags.Items.MUSHROOM_SPORE)
+                .input('g', TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("dirt")))
+                .criterion(FabricRecipeProvider.hasItem(ModBlocks.GROUND_TIER1.asItem()), RecipeProvider.conditionsFromItem(ModBlocks.GROUND_TIER1.asItem()))
+                .criterion("has_mushroom_spore", RecipeProvider.conditionsFromTag(ModTags.Items.MUSHROOM_SPORE))
+                .offerTo(exporter);
+    }
+
+    private static void groundRecipe(RecipeExporter exporter, Item ground, Item output) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, output, 2)
+                .pattern("sgs")
+                .pattern("gsg")
+                .pattern("sgs")
+                .input('s', ModTags.Items.MUSHROOM_SPORE)
+                .input('g', ground)
+                .criterion(FabricRecipeProvider.hasItem(ground), RecipeProvider.conditionsFromItem(ground))
+                .criterion("has_mushroom_spore", RecipeProvider.conditionsFromTag(ModTags.Items.MUSHROOM_SPORE))
+                .offerTo(exporter);
+    }
+
+    private static void mutagenRecipe(RecipeExporter exporter) {
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MUTAGEN)
+                .input(Ingredient.ofItems(Items.AMETHYST_SHARD))
+                .input(Ingredient.ofItems(Items.AMETHYST_SHARD))
+                .input(Ingredient.ofItems(Items.BONE_MEAL))
+                .criterion(FabricRecipeProvider.hasItem(Items.AMETHYST_SHARD), FabricRecipeProvider.conditionsFromItem(Items.AMETHYST_SHARD))
+                .criterion(FabricRecipeProvider.hasItem(Items.BONE_MEAL), FabricRecipeProvider.conditionsFromItem(Items.BONE_MEAL))
+                .offerTo(exporter);
+    }
+
+    private static void stabilizerRecipe(RecipeExporter exporter) {
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STABILIZER)
+                .input(Ingredient.ofItems(Items.CLAY_BALL))
+                .input(Ingredient.ofItems(Items.CLAY_BALL))
+                .input(Ingredient.ofItems(Items.BONE_MEAL))
+                .criterion(FabricRecipeProvider.hasItem(Items.CLAY_BALL), FabricRecipeProvider.conditionsFromItem(Items.CLAY_BALL))
+                .criterion(FabricRecipeProvider.hasItem(Items.BONE_MEAL), FabricRecipeProvider.conditionsFromItem(Items.BONE_MEAL))
+                .offerTo(exporter);
     }
 
     private static void amethystRecipe(RecipeExporter exporter) {

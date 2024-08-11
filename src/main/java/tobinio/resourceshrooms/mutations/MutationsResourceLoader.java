@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -72,23 +74,36 @@ public class MutationsResourceLoader implements SimpleSynchronousResourceReloadL
 
             JsonObject base = element.getAsJsonObject();
 
-            List<Block> requirements = new ArrayList<>();
+            List<Block> blockRequirements = new ArrayList<>();
+            List<TagKey<Block>> tagRequirements = new ArrayList<>();
 
             for (JsonElement rawBlock : base.get("requirements").getAsJsonArray()) {
-                Optional<Block> block = stringToBlock(rawBlock.getAsString());
+                String string = rawBlock.getAsString();
 
+                if (string.startsWith("#")) {
+                    Identifier id = Identifier.tryParse(string.substring(1));
 
-                if (block.isPresent()) {
-                    requirements.add(block.get());
+                    if (id == null) {
+                        ResourceShrooms.LOGGER.error("invalid id %s".formatted(string));
+                        continue;
+                    }
+
+                    var key = TagKey.of(RegistryKeys.BLOCK, id);
+                    tagRequirements.add(key);
                 } else {
-                    ResourceShrooms.LOGGER.error("No block found with name %s".formatted(rawBlock.getAsString()));
-                }
+                    Optional<Block> block = stringToBlock(string);
 
+                    if (block.isPresent()) {
+                        blockRequirements.add(block.get());
+                    } else {
+                        ResourceShrooms.LOGGER.error("No block found with name %s".formatted(string));
+                    }
+                }
             }
 
             int chance = base.get("chance").getAsInt();
 
-            mutations.add(new Mutation(requirements, result, chance));
+            mutations.add(new Mutation(blockRequirements, tagRequirements, result, chance));
         }
 
         return mutations;

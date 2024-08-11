@@ -21,14 +21,12 @@ public class MutationEmiRecipe implements EmiRecipe {
 
     private final EmiStack output;
 
-    public MutationEmiRecipe(List<EmiStack> requirements, float chance, Mushroom output, Identifier id) {
+    public MutationEmiRecipe(List<EmiIngredient> requirements, float chance, Mushroom output, Identifier id) {
         this.chance = chance;
         this.id = id;
 
         this.output = EmiStack.of(output.blockItem());
-        this.requirements = requirements.stream()
-                .map(block -> EmiIngredient.of(List.of(block)))
-                .toList();
+        this.requirements = requirements;
     }
 
     @Override

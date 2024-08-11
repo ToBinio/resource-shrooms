@@ -2,7 +2,7 @@
   {
     "chance": 10,
     "requirements": [
-      "minecraft:gravel",
+      "#c:stones",
       "resourceshrooms:gravel_mushroom"
     ]
   }

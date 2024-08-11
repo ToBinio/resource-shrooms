@@ -3,12 +3,14 @@ package tobinio.resourceshrooms;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
+import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
@@ -42,9 +44,9 @@ public class ModEmiPlugin implements EmiPlugin {
 
             count++;
 
-            List<EmiStack> allRequirements = new ArrayList<>();
+            List<EmiIngredient> allRequirements = new ArrayList<>();
 
-            for (Block block : mutation.requirements()) {
+            for (Block block : mutation.blockRequirements()) {
                 Optional<Mushroom> mushroom = Mushrooms.getFromBlock(block);
 
                 if (mushroom.isPresent()) {
@@ -56,6 +58,10 @@ public class ModEmiPlugin implements EmiPlugin {
                 } else {
                     allRequirements.add(EmiStack.of(block.asItem()));
                 }
+            }
+
+            for (TagKey<Block> tagRequirement : mutation.tagRequirements()) {
+                allRequirements.add(EmiIngredient.of(tagRequirement));
             }
 
             registry.addRecipe(new MutationEmiRecipe(allRequirements, mutation.chance(), mutation.result(), id("mutation_%d".formatted(count))));

@@ -2,6 +2,7 @@
   {
     "chance": 2,
     "requirements": [
+      "minecraft:magma_block",
       "resourceshrooms:lapis_mushroom",
       "resourceshrooms:moss_mushroom"
     ]

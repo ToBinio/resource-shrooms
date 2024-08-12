@@ -2,6 +2,8 @@
   {
     "chance": 1,
     "requirements": [
+      "minecraft:deepslate",
+      "minecraft:lava",
       "resourceshrooms:magma_mushroom",
       "resourceshrooms:coal_mushroom"
     ]

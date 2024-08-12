@@ -2,6 +2,7 @@
   {
     "chance": 5,
     "requirements": [
+      "minecraft:granite",
       "resourceshrooms:iron_mushroom",
       "resourceshrooms:amethyst_mushroom",
       "resourceshrooms:magma_mushroom"

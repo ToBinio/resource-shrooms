@@ -2,6 +2,7 @@
   {
     "chance": 5,
     "requirements": [
+      "minecraft:andesite",
       "resourceshrooms:stone_mushroom"
     ]
   }

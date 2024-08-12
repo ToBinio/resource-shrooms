@@ -51,7 +51,7 @@ public class MutationEmiRecipe implements EmiRecipe {
 
     @Override
     public int getDisplayWidth() {
-        return 108;
+        return 118;
     }
 
     @Override
@@ -72,12 +72,12 @@ public class MutationEmiRecipe implements EmiRecipe {
         }
 
         var startX = requirements.size() * 18;
-        var middle = (startX + 90) / 2;
+        var middle = (startX + 100) / 2;
 
         widgets.addTexture(EmiTexture.EMPTY_ARROW, middle - EmiTexture.EMPTY_ARROW.width / 2, 17);
         widgets.addText(Text.literal("%s%%".formatted(chance)), middle, 5, -1, true)
                 .horizontalAlign(TextWidget.Alignment.CENTER);
 
-        widgets.addSlot(output, 90, 16).recipeContext(this);
+        widgets.addSlot(output, 100, 16).recipeContext(this);
     }
 }

@@ -2,6 +2,7 @@
   {
     "chance": 10,
     "requirements": [
+      "minecraft:diorite",
       "resourceshrooms:gravel_mushroom",
       "resourceshrooms:stone_mushroom"
     ]

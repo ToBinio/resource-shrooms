@@ -2,6 +2,7 @@
   {
     "chance": 2,
     "requirements": [
+      "minecraft:water",
       "resourceshrooms:calcite_mushroom",
       "resourceshrooms:iron_mushroom"
     ]

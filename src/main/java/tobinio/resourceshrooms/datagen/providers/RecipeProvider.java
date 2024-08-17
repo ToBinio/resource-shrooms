@@ -15,12 +15,11 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import tobinio.resourceshrooms.blocks.ModBlocks;
 import tobinio.resourceshrooms.items.ModItems;
+import tobinio.resourceshrooms.mushrooms.Mushroom;
 import tobinio.resourceshrooms.mushrooms.Mushrooms;
 import tobinio.resourceshrooms.tags.ModTags;
 
 import java.util.concurrent.CompletableFuture;
-
-import static tobinio.resourceshrooms.ResourceShrooms.id;
 
 /**
  * Created: 17.04.24
@@ -34,6 +33,8 @@ public class RecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
+        dirtSporesRecipe(exporter);
+
         mutagenRecipe(exporter);
         stabilizerRecipe(exporter);
 
@@ -42,7 +43,17 @@ public class RecipeProvider extends FabricRecipeProvider {
         groundRecipe(exporter, ModBlocks.GROUND_TIER2.asItem(), ModBlocks.GROUND_TIER3.asItem());
         groundRecipe(exporter, ModBlocks.GROUND_TIER3.asItem(), ModBlocks.GROUND_TIER4.asItem());
 
+        for (Mushroom mushroom : Mushrooms.ALL) {
+            headToSporeRecipe(exporter, mushroom);
+        }
+
+        dirtRecipe(exporter);
+        stoneRecipe(exporter);
+        sandRecipe(exporter);
+        netherrackRecipe(exporter);
+        mossRecipe(exporter);
         amethystRecipe(exporter);
+        quarzRecipe(exporter);
         calciteRecipe(exporter);
         coalRecipe(exporter);
         copperRecipe(exporter);
@@ -52,7 +63,18 @@ public class RecipeProvider extends FabricRecipeProvider {
         gravelRecipe(exporter);
         ironRecipe(exporter);
         lapisRecipe(exporter);
+        redstoneRecipe(exporter);
         magmaRecipe(exporter);
+    }
+
+    private static void dirtSporesRecipe(RecipeExporter exporter) {
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Mushrooms.DIRT_MUSHROOM.spores(), 2)
+                .input(Ingredient.ofItems(Items.WHEAT_SEEDS))
+                .input(Ingredient.ofItems(Items.DIRT))
+                .input(Ingredient.ofItems(Items.BROWN_MUSHROOM, Items.RED_MUSHROOM))
+                .criterion(FabricRecipeProvider.hasItem(Items.WHEAT_SEEDS), FabricRecipeProvider.conditionsFromItem(Items.WHEAT_SEEDS))
+                .criterion(FabricRecipeProvider.hasItem(Items.DIRT), FabricRecipeProvider.conditionsFromItem(Items.DIRT))
+                .offerTo(exporter, "generate_dirt_spores");
     }
 
     private static void groundTier1Recipe(RecipeExporter exporter) {
@@ -99,6 +121,13 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
+    private static void headToSporeRecipe(RecipeExporter exporter, Mushroom mushroom) {
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, mushroom.spores(), 2)
+                .input(Ingredient.ofItems(mushroom.head()))
+                .criterion(FabricRecipeProvider.hasItem(mushroom.head()), FabricRecipeProvider.conditionsFromItem(mushroom.head()))
+                .offerTo(exporter);
+    }
+
     private static void amethystRecipe(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.AMETHYST_SHARD)
                 .pattern(" mm")
@@ -106,6 +135,16 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .pattern("mm ")
                 .input('m', Mushrooms.AMETHYST_MUSHROOM.head())
                 .criterion(FabricRecipeProvider.hasItem(Mushrooms.AMETHYST_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.AMETHYST_MUSHROOM.head()))
+                .offerTo(exporter);
+    }
+
+    private static void quarzRecipe(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.QUARTZ)
+                .pattern(" qq")
+                .pattern("q q")
+                .pattern("qq ")
+                .input('q', Mushrooms.QUARTZ_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.QUARTZ_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.QUARTZ_MUSHROOM.head()))
                 .offerTo(exporter);
     }
 
@@ -129,6 +168,56 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
+    private static void dirtRecipe(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.DIRT)
+                .pattern("dd")
+                .pattern("dd")
+                .input('d', Mushrooms.DIRT_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.DIRT_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.DIRT_MUSHROOM.head()))
+                .offerTo(exporter);
+    }
+
+    private static void sandRecipe(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.SAND)
+                .pattern("ss")
+                .pattern("ss")
+                .input('s', Mushrooms.SAND_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.SAND_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.SAND_MUSHROOM.head()))
+                .offerTo(exporter);
+    }
+
+    private static void mossRecipe(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.MOSS_BLOCK)
+                .pattern("mm")
+                .pattern("mm")
+                .input('m', Mushrooms.MOSS_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.MOSS_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.MOSS_MUSHROOM.head()))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.MOSS_CARPET)
+                .pattern("mmm")
+                .input('m', Mushrooms.MOSS_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.MOSS_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.MOSS_MUSHROOM.head()))
+                .offerTo(exporter);
+    }
+
+    private static void stoneRecipe(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.COBBLESTONE)
+                .pattern("ss")
+                .pattern("ss")
+                .input('s', Mushrooms.STONE_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.STONE_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.STONE_MUSHROOM.head()))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STONE)
+                .pattern(" s ")
+                .pattern("sss")
+                .pattern(" s ")
+                .input('s', Mushrooms.STONE_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.STONE_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.STONE_MUSHROOM.head()))
+                .offerTo(exporter);
+    }
+
     private static void copperRecipe(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.RAW_COPPER)
                 .pattern(" m ")
@@ -137,16 +226,31 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .input('i', Items.RAW_IRON)
                 .input('m', Mushrooms.COPPER_MUSHROOM.head())
                 .criterion(FabricRecipeProvider.hasItem(Mushrooms.COPPER_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.COPPER_MUSHROOM.head()))
+                .criterion(FabricRecipeProvider.hasItem(Items.RAW_IRON), FabricRecipeProvider.conditionsFromItem(Items.RAW_IRON))
+                .offerTo(exporter);
+    }
+
+    private static void netherrackRecipe(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.NETHERRACK)
+                .pattern(" n ")
+                .pattern("ncn")
+                .pattern(" n ")
+                .input('c', Items.COBBLESTONE)
+                .input('n', Mushrooms.NETHERRACK_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.COPPER_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.COPPER_MUSHROOM.head()))
+                .criterion(FabricRecipeProvider.hasItem(Items.COBBLESTONE), FabricRecipeProvider.conditionsFromItem(Items.COBBLESTONE))
                 .offerTo(exporter);
     }
 
     private static void diamondRecipe(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.DIAMOND)
                 .pattern("mmm")
-                .pattern("mmm")
+                .pattern("mam")
                 .pattern("mmm")
                 .input('m', Mushrooms.DIAMOND_MUSHROOM.head())
+                .input('a', Items.AMETHYST_BLOCK)
                 .criterion(FabricRecipeProvider.hasItem(Mushrooms.DIAMOND_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.DIAMOND_MUSHROOM.head()))
+                .criterion(FabricRecipeProvider.hasItem(Items.AMETHYST_BLOCK), FabricRecipeProvider.conditionsFromItem(Items.AMETHYST_BLOCK))
                 .offerTo(exporter);
     }
 
@@ -200,6 +304,19 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .input('b', Items.BONE_MEAL)
                 .input('m', Mushrooms.LAPIS_MUSHROOM.head())
                 .criterion(FabricRecipeProvider.hasItem(Mushrooms.LAPIS_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.LAPIS_MUSHROOM.head()))
+                .criterion(FabricRecipeProvider.hasItem(Items.BONE_MEAL), FabricRecipeProvider.conditionsFromItem(Items.BONE_MEAL))
+                .offerTo(exporter);
+    }
+
+    private static void redstoneRecipe(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.REDSTONE)
+                .pattern(" rr")
+                .pattern("rbr")
+                .pattern("rr ")
+                .input('b', Items.BONE_MEAL)
+                .input('r', Mushrooms.REDSTONE_MUSHROOM.head())
+                .criterion(FabricRecipeProvider.hasItem(Mushrooms.REDSTONE_MUSHROOM.head()), FabricRecipeProvider.conditionsFromItem(Mushrooms.REDSTONE_MUSHROOM.head()))
+                .criterion(FabricRecipeProvider.hasItem(Items.BONE_MEAL), FabricRecipeProvider.conditionsFromItem(Items.BONE_MEAL))
                 .offerTo(exporter);
     }
 

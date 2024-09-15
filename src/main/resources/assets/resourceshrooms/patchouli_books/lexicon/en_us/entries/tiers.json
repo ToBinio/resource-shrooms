@@ -1,0 +1,50 @@
+{
+  "name": "Tiers",
+  "icon": "minecraft:grass_block",
+  "category": "resourceshrooms:category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Mushroom Types",
+      "text": "There are 5 tiers of mushrooms 0 - 4.$(br2)Each mushroom can only be placed on a ground block with at leased its level."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Tier 0",
+      "text": "Tier 0 is the base tier and only contains vanilla blocks. Because of this only basic mushroom can grow.",
+      "multiblock": {
+        "pattern": [
+          [
+            " 0 "
+          ]
+        ],
+        "mapping": {
+          "0": "#resourceshrooms:ground_tier0"
+        },
+        "symmetrical": true
+      },
+      "enable_visualize": false
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Tier 1+",
+      "multiblock": {
+        "pattern": [
+          [
+            " 0 "
+          ]
+        ],
+        "mapping": {
+          "0": "#resourceshrooms:ground_tier1,#resourceshrooms:ground_tier2,#resourceshrooms:ground_tier3,#resourceshrooms:ground_tier4"
+        },
+        "symmetrical": true
+      },
+      "enable_visualize": false
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "resourceshrooms:ground_tier1",
+      "text": "For better mushrooms you will need better ground.$(br2)Tier 1+ Ground also enables you to use $(item)mutagens$() & $(item)stabilizers$()"
+    }
+  ]
+}

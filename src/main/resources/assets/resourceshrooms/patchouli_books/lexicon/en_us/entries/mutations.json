@@ -1,17 +1,16 @@
 {
-  "name": "Mushroom Mutation",
+  "name": "Mutation",
   "icon": "minecraft:bone_meal",
   "category": "resourceshrooms:category",
   "pages": [
     {
       "type": "patchouli:text",
       "title": "Mushroom Mutation",
-      "text": "Resourceshrooms have a random chance to mutate each time they spread.$(br)Some mutations have extra requirements like having another mushroom as a neighbor of the goal location.$(br)The easiest way to find all mutations is by using the EMI."
+      "text": "Each time a resourceshroom spreads it has a random chance to mutate.$(br)Most mutations have extra requirements, like having another mushroom as a neighbor. These requirements will always be calculated based on the target location.$(br2)Tip: The easiest way to find all mutations is by looking through EMI."
     },
     {
       "type": "patchouli:multiblock",
       "name": "Neighbors",
-      "text": "When a mushroom mutations to the red Terracotta all blocks marked with a glass are regarded as neighbors.",
       "multiblock": {
         "pattern": [
           [
@@ -37,6 +36,15 @@
         "symmetrical": true
       },
       "enable_visualize": false
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "resourceshrooms:mutagen,resourceshrooms:stabilizer",
+      "text": "Mutagen and Stabilizer can be placed on all Tier1+ ground blocks.$(br2)Mutagen will double the chance of mutagens.$(br)Stabilizer will make it impossible for a mushroom to mutate."
+    },
+    {
+      "type": "patchouli:empty",
+      "draw_filler": false
     }
   ]
 }

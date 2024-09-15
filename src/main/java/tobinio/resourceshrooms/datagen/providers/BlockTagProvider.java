@@ -22,7 +22,7 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER0).add(Blocks.DIRT);
+        getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER0).forceAddTag(TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("dirt")));
         getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER1).add(ModBlocks.GROUND_TIER1);
         getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER2).add(ModBlocks.GROUND_TIER2);
         getOrCreateTagBuilder(ModTags.Blocks.GROUND_TIER3).add(ModBlocks.GROUND_TIER3);

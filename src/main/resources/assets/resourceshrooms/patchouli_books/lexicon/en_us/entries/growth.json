@@ -1,17 +1,16 @@
 {
-  "name": "Mushroom Growth",
-  "icon": "resourceshrooms:diamond_mushroom_spores",
+  "name": "Growth",
+  "icon": "minecraft:bone_meal",
   "category": "resourceshrooms:category",
   "pages": [
     {
       "type": "patchouli:text",
       "title": "Mushroom Growth",
-      "text": "Resourceshrooms have 3 states of growth once they are fully grown they have a random chance to spread to a neighboring block."
+      "text": "Resourceshrooms have 3 states of growth once they are fully grown they are ready for harvest and will drop a mushroom head.$(br2)Once fully grown they will also have a random chance to spread to neighboring blocks."
     },
     {
       "type": "patchouli:multiblock",
       "name": "Neighbors",
-      "text": "When a mushroom tries to spread all blocks marked with a glass are regarded as neighbors.",
       "multiblock": {
         "pattern": [
           [

@@ -1,0 +1,17 @@
+{
+  "name": "Getting started",
+  "icon": "resourceshrooms:dirt_mushroom",
+  "category": "resourceshrooms:category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "The beginning",
+      "text": "Resource Shrooms is a mod focused on gathering resources through mushrooms. As long as the conditions are right, mushrooms can spread and conquer new land. In certain cases they can also mutate into more variants."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "resourceshrooms:generate_dirt_spores",
+      "text": "$(bold)The Dirt Mushroom$(). This will be the only one you can create without mutating others. So let's craft some Spores!"
+    }
+  ]
+}

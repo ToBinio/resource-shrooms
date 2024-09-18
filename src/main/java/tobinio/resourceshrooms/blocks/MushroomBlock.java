@@ -94,6 +94,15 @@ public class MushroomBlock extends CropBlock {
             return;
         }
 
+        //try spearing 3 times to increase chance
+        for (int i = 0; i < 3; i++) {
+            if (trySpread(world, pos, random)) {
+                return;
+            }
+        }
+    }
+
+    private boolean trySpread(ServerWorld world, BlockPos pos, Random random) {
         var xOffset = random.nextBetween(-1, 1);
         var yOffset = random.nextBetween(-1, 1);
         var zOffset = random.nextBetween(-1, 1);
@@ -103,7 +112,10 @@ public class MushroomBlock extends CropBlock {
         if (canPlaceAt(this.getDefaultState(), world, goalPosition) && world.getBlockState(goalPosition)
                 .isOf(Blocks.AIR)) {
             world.setBlockState(goalPosition, getOffSpring(world, goalPosition, random));
+            return true;
         }
+
+        return false;
     }
 
     private BlockState getOffSpring(ServerWorld world, BlockPos goalPos, Random random) {

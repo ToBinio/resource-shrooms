@@ -1,6 +1,7 @@
 package tobinio.resourceshrooms.blocks;
 
 import net.minecraft.block.*;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
@@ -10,6 +11,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import tobinio.resourceshrooms.mushrooms.Mushroom;
@@ -21,7 +23,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MushroomBlock extends Block {
+public class MushroomBlock extends CropBlock {
 
     protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
     public static final int MAX_AGE = 2;
@@ -47,9 +49,29 @@ public class MushroomBlock extends Block {
     }
 
     @Override
+    protected IntProperty getAgeProperty() {
+        return AGE;
+    }
+
+    @Override
+    public int getMaxAge() {
+        return MAX_AGE;
+    }
+
+    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Vec3d vec3d = state.getModelOffset(world, pos);
         return SHAPE.offset(vec3d.x, vec3d.y, vec3d.z);
+    }
+
+    @Override
+    protected ItemConvertible getSeedsItem() {
+        return getMushroom().spores();
+    }
+
+    @Override
+    protected int getGrowthAmount(World world) {
+        return 1;
     }
 
     @Override
@@ -61,8 +83,12 @@ public class MushroomBlock extends Block {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    protected boolean hasRandomTicks(BlockState state) {
+        return true;
+    }
 
+    @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(AGE) < MAX_AGE) {
             world.setBlockState(pos, state.with(AGE, state.get(AGE) + 1));
             return;

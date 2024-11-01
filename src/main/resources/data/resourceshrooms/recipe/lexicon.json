@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    [
+      {
+        "item": "minecraft:brown_mushroom"
+      },
+      {
+        "item": "minecraft:red_mushroom"
+      }
+    ]
+  ],
+  "result": {
+    "components": {
+      "patchouli:book": "resourceshrooms:lexicon"
+    },
+    "count": 1,
+    "id": "patchouli:guide_book"
+  }
+}
